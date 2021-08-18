@@ -1,0 +1,20 @@
+{
+  "name": "synth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:window":"CHOKIDAR_USEPOLLING=true react-scripts start",
+    "start:mac":"react-scripts start",
+    "build": "react-scripts build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
+  }
+}
