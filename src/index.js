@@ -1,19 +1,66 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router,
-Link,
-Route
-}from 'react-router-dom';
+
+
+import {
+AddPost,
+CreateProfile,
+Delete,
+Edit,
+Header,
+Login,
+Posts,
+Search,
+SendMessage,
+ViewProfile
+} from './components';
+
 
 const App =()=> {
-    <h1> We did something today 
-        <div>Dan added this.</div>
-    </h1>
-    return (
-        <Router>
-        </Router>
-    )
+
+    const [user, setUser] = useState({});
+    const [posts, setPosts] = useState([])
+   
+   
+    return <div className="app"> 
+        <Login
+            user={user}
+            setUser={setUser}
+        />
+
+        <Header
+        
+        />
+
+        <Posts
+            posts={posts}
+            setPosts={setPosts}
+        />
+
+        <Search/>
+
+        <AddPost/>
+
+        <Delete/>
+
+        <Edit/>
+
+        <SendMessage/>
+
+        <ViewProfile/>
+
+        <CreateProfile
+            user={user}
+            setUser={setUser}
+        />
+
+
+   
+
+
+        
+        </div>
 }
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('app'));
 
