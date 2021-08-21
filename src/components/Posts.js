@@ -1,40 +1,53 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 
 
-const Posts = () => {
-    const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt-class'
-    const [posts, setPosts] = useState([]);
-  
+const Posts = (props) => {
+    const {posts, setPosts} = props || {};
+    const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
+    const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Int1c2VybmFtZX0iLCJwYXNzd29yZCI6IntwYXNzd29yZH0iLCJpYXQiOjE1MTYyMzkwMjJ9.uVMT_PuUroOnLowfiPo7f4jtwgtTThCr4ctRmWLGans'
+    
+    //FIRST ATTEMPT FAILED (IGNORE CODES BELOW)
+    // useEffect (() => {
+    //     const fetchPosts = async () => {
+    //         const response = await fetch(`${BASE_URL}/posts`);
+    //         const data = await response.json();
 
-    useEffect (() => {
-        const fetchPosts = async () => {
-            const response = await fetch(`${BASE_URL}/posts`);
-            const data = await response.json();
-            console.log("1", data) //see the structure of the posts data
-            console.log(posts)
-            setPosts(data);
-        }
-        fetchPosts();
-    }, [])
+    //         console.log("1", data) //see the structure of the posts data
+    //         console.log("2",posts)
+
+    //         setPosts(data);
+    //     }
+    //     fetchPosts();
+    // }, [])
+
+
+    fetch(`${BASE_URL}/posts`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${TOKEN}`
+        },
+    }).then(response => response.json())
+    .then(result => {
+      console.log(result);
+    })
+    .catch(console.error);
+
+    console.log("2",posts)
     
     return  <div className="Posts">
           
         <section className="AllPosts">
             <h1>Posts</h1>
-            {/* {
-                posts 
-                ?
-                posts.map((post) => 
+            {
+                posts && posts.map((post) => 
                     <Fragment key={post.id}>
+                        <span>{post.description}</span>
+                        <span>{post.price}</span>
+                        <span>{post.seller}</span>
                         <span>{post.location}</span>
-                        <span>{post.willDeliver}</span>
-                        <span>{post.messages}</span>
-                        <span>{post.active}</span>
-                </Fragment>)
-                :
-                null
-            }   */}
+                    </Fragment>)
+            }  
         </section>
             
         <section> 

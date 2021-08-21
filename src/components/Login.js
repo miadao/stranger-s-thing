@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 
 const Login = ({setAuthenticated}) => {
     const {LoginSuccess, setLoginSuccess} = useState(false);
+   
+
     function authenticate(event){
         event.preventDefault();  
 
@@ -34,6 +36,11 @@ const Login = ({setAuthenticated}) => {
                     <input type="text"/>
                 </div>
                 <button type="submit">Login</button>
+                
+                {/* Logic goes here if username and password match database, Login to prompt the user's 
+                screen that reads "Login Successfully" */}
+
+
                 <Link className="CreateProfile" to="/CreateProfile">Don't have an account? Sign Up!</Link>
             </form>
             </section>
