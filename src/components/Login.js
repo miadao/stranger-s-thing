@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-const Login = (setAuthenticated) => {
+const Login = ({setAuthenticated}) => {
     const {LoginSucess, setLoginSuccess} = useState(false);
     function authenticate(event){
         event.preventDefault();  
@@ -13,7 +13,7 @@ const Login = (setAuthenticated) => {
         //if authenticated, re-directed to home page
         //if not authenicated, display the message to user's screen 
         
-        console.log('form submitted')
+        console.log('Login Success!')
         setLoginSuccess(true);
         
     }
@@ -33,7 +33,7 @@ const Login = (setAuthenticated) => {
                     <input type="text"/>
                 </div>
                 <button type="submit">Login</button>
-                <Link className="LinkBtn" to="/register">Register</Link>
+                <Link className="CreateProfile" to="/CreateProfile">Don't have an account? Sign Up!</Link>
             </form>
             </section>
     )

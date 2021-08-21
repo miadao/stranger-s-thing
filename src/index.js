@@ -17,47 +17,19 @@ Login,
 Posts,
 Search,
 SendMessage,
-ViewProfile
+Home
 } from './components';
 
 
 const App =()=> {
 
-    const [user, setUser] = useState({});
+   
     const [posts, setPosts] = useState([])
-    const [authenticated, setAuthenticate] = useState(false);
+    const [authenticated, setAuthenticated] = useState(false);
+    const {LoginSucess, setLoginSuccess} = useState(false);
    
    
     return <div className="app"> 
-        <Login
-            user={user}
-            setUser={setUser}
-        />
-
-        <Header
-        
-        />
-
-        <Posts
-            posts={posts}
-            setPosts={setPosts}
-        />
-
-        <Search/>
-
-        <AddPost/>
-
-        <Delete/>
-
-        <Edit/>
-
-        <SendMessage/>
-
-        <ViewProfile/>
-
-        <CreateProfile
-            
-        />
 
         <Router>
             <div>
@@ -75,8 +47,11 @@ const App =()=> {
                     </Route>
                     <Route path="/Login">
                         <Login 
+
                             authenticated={authenticated}
-                            setAuthenticate={setAuthenticate}
+                            setAuthenticate={setAuthenticated}
+                            LoginSucess={LoginSucess}
+                            setLoginSuccess={setLoginSuccess}
                         />
                     </Route>
                     <Route path="/Profile">
@@ -91,7 +66,28 @@ const App =()=> {
                 </Switch>
             </div>
         </Router>
-        </div>
+
+        
+        <Header/>
+
+        <Posts
+            posts={posts}
+            setPosts={setPosts}
+        />
+
+        <Search/>
+
+        <AddPost/>
+
+        <Delete/>
+
+        <Edit/>
+
+        <SendMessage/>
+
+        <CreateProfile/>
+
+     </div>
 }
 
 ReactDOM.render(<App/>, document.getElementById('app'));
