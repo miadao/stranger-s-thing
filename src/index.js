@@ -39,7 +39,9 @@ const App =()=> {
                 <Header/>
                 <Switch>
                     <Route path="/Posts">
-                        <Posts />
+                        <Posts 
+                            posts={posts}
+                            setPosts={setPosts}/>
                     </Route>
 
                     <Route path="/Login">
@@ -70,10 +72,7 @@ const App =()=> {
             </div>
 
 
-            <Posts
-                posts={posts}
-                setPosts={setPosts}
-            />
+            
 
             <Search/>
 
