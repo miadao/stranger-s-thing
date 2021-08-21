@@ -10,15 +10,14 @@ Switch
 import {
 AddPost,
 CreateProfile,
-Delete,
-Edit,
 Header,
 Login,
 Posts,
 Search,
 SendMessage,
 Home,
-Profile
+Profile,
+Edit
 } from './components';
 
 
@@ -42,6 +41,11 @@ const App =()=> {
                         <Posts 
                             posts={posts}
                             setPosts={setPosts}/>
+
+                    </Route>
+
+                    <Route path="/AddPost">
+                        <AddPost/>
                     </Route>
 
                     <Route path="/Login">
@@ -73,14 +77,9 @@ const App =()=> {
 
 
             
-
+            <Edit/>
             <Search/>
 
-            <AddPost/>
-
-            <Delete/>
-
-            <Edit/>
 
             <SendMessage/>
 
