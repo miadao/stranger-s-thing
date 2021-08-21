@@ -20,7 +20,8 @@ const Login = ({setAuthenticated}) => {
 
     if(LoginSuccess){
         return <Redirect to="/Posts"/>
-    } return (
+
+    }return (
         <section className="login"> 
             <h1>Login</h1>
             <form onSubmit={authenticate}>

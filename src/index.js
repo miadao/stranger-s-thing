@@ -41,48 +41,51 @@ const App =()=> {
                     <Route path="/Posts">
                         <Posts />
                     </Route>
+
                     <Route path="/Login">
                         <Login 
-
                             authenticated={authenticated}
                             setAuthenticate={setAuthenticated}
                             LoginSuccess={LoginSuccess}
-                            setLoginSuccess={setLoginSuccess}
-                        />
+                            setLoginSuccess={setLoginSuccess}/>
                     </Route>
+
+                    <Route path="/CreateProfile"> 
+                        <CreateProfile />
+                    </Route>
+
                     <Route path="/Profile">
                         <Profile />
                     </Route>
+
                     <Route exact path="/">
                         <Home />
                     </Route>
+
                     <Route path="*">
                         <h1>404 Error - Page Not Found!</h1>
                     </Route>
+
                 </Switch>
             </div>
+
+
+            <Posts
+                posts={posts}
+                setPosts={setPosts}
+            />
+
+            <Search/>
+
+            <AddPost/>
+
+            <Delete/>
+
+            <Edit/>
+
+            <SendMessage/>
+
         </Router>
-
-        
-       
-
-        <Posts
-            posts={posts}
-            setPosts={setPosts}
-        />
-
-        <Search/>
-
-        <AddPost/>
-
-        <Delete/>
-
-        <Edit/>
-
-        <SendMessage/>
-
-        <CreateProfile/>
-
      </div>
 }
 
