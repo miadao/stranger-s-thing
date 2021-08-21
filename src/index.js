@@ -17,7 +17,8 @@ Login,
 Posts,
 Search,
 SendMessage,
-Home
+Home,
+Profile
 } from './components';
 
 
@@ -26,7 +27,7 @@ const App =()=> {
    
     const [posts, setPosts] = useState([])
     const [authenticated, setAuthenticated] = useState(false);
-    const {LoginSucess, setLoginSuccess} = useState(false);
+    const {LoginSuccess, setLoginSuccess} = useState(false);
    
    
     return <div className="app"> 
@@ -50,7 +51,7 @@ const App =()=> {
 
                             authenticated={authenticated}
                             setAuthenticate={setAuthenticated}
-                            LoginSucess={LoginSucess}
+                            LoginSuccess={LoginSuccess}
                             setLoginSuccess={setLoginSuccess}
                         />
                     </Route>

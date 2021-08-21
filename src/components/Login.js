@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 const Login = ({setAuthenticated}) => {
-    const {LoginSucess, setLoginSuccess} = useState(false);
+    const {LoginSuccess, setLoginSuccess} = useState(false);
     function authenticate(event){
         event.preventDefault();  
 
@@ -18,7 +18,7 @@ const Login = ({setAuthenticated}) => {
         
     }
 
-    if(LoginSucess){
+    if(LoginSuccess){
         return <Redirect to="/Posts"/>
     } return (
         <section className="login"> 

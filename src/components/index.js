@@ -8,4 +8,4 @@ export { default as Posts } from './Posts';
 export { default as Search } from './Search';
 export { default as SendMessage } from './SendMessage';
 export { default as Home } from './Home';
-
+export { default as Profile } from './Profile';
