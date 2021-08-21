@@ -8,6 +8,7 @@ import {
 const ViewProfile = () => {
     const forViewProfile = () => {
         console.log("Viewing Profile.")
+        console.log(fetchData())
     }
     return <>
      <Link to="/Profile"><button className="viewProfileBtn" onClick={forViewProfile}>VIEW PROFILE</button> </Link>
