@@ -31,17 +31,12 @@ const App =()=> {
    
    
     return <div className="app"> 
+        
 
         <Router>
+            
             <div>
-                <nav>
-                    <ul>
-                        <li> <Link to="/">Home</Link></li>
-                        <li> <Link to="/">Posts</Link></li>
-                        <li> <Link to="/">Login</Link></li>
-                        <li> <Link to="/">Profile</Link></li>
-                    </ul>
-                </nav>
+                <Header/>
                 <Switch>
                     <Route path="/Posts">
                         <Posts />
@@ -69,7 +64,7 @@ const App =()=> {
         </Router>
 
         
-        <Header/>
+       
 
         <Posts
             posts={posts}

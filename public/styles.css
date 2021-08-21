@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: aquamarine;
+    border: 2px solid;
+  
+}
+
+section {
+    height: 100%;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+   
+}
+
+ul {
+    list-style: none;
+    
+}
+
+li {
+    float: right;
+    margin: 30px;
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    float: left;
+    align-self: center;
+}
