@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { 
     fetchData
@@ -9,7 +10,7 @@ const ViewProfile = () => {
         console.log("Viewing Profile.")
     }
     return <>
-    <button className="viewProfileBtn" onClick={forViewProfile}>VIEW PROFILE</button>
+     <Link to="/Profile"><button className="viewProfileBtn" onClick={forViewProfile}>VIEW PROFILE</button> </Link>
     </>;
 }
 
