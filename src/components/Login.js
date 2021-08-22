@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-const Login = ({setAuthenticated}) => {
+const Login = ({}) => {
+   
     const {LoginSuccess, setLoginSuccess} = useState(false);
    
 
@@ -11,7 +12,11 @@ const Login = ({setAuthenticated}) => {
         //LOGIC
         //check for inputs
         //validate the username and password
+        
+
         //make AJAX request to server, then server will send back response if user is authenticated 
+        
+
         //if authenticated, re-directed to home page
         //if not authenicated, display the message to user's screen 
         

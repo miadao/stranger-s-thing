@@ -5,33 +5,19 @@ import React, { useEffect, Fragment } from 'react';
 const Posts = (props) => {
     const {posts, setPosts} = props || {};
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
-    const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Int1c2VybmFtZX0iLCJwYXNzd29yZCI6IntwYXNzd29yZH0iLCJpYXQiOjE1MTYyMzkwMjJ9.uVMT_PuUroOnLowfiPo7f4jtwgtTThCr4ctRmWLGans'
-    
-    //FIRST ATTEMPT FAILED (IGNORE CODES BELOW)
-    // useEffect (() => {
-    //     const fetchPosts = async () => {
-    //         const response = await fetch(`${BASE_URL}/posts`);
-    //         const data = await response.json();
-
-    //         console.log("1", data) //see the structure of the posts data
-    //         console.log("2",posts)
-
-    //         setPosts(data);
-    //     }
-    //     fetchPosts();
-    // }, [])
-
-
-    fetch(`${BASE_URL}/posts`, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${TOKEN}`
+    const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
+    fetch(`${BASE_URL}/users/me`, {
+        method: 'GET',
+        headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${TOKEN}`
         },
-    }).then(response => response.json())
-    .then(result => {
-      console.log(result);
-    })
-    .catch(console.error);
+       
+    }).then(res => res.json())
+      .then(result => console.log('ME ENDPOINT', result))
+      .catch(err => console.error('ME ENDPOINT', err));
+
+      setPosts(posts) //check
 
     console.log("2",posts)
     
@@ -49,6 +35,11 @@ const Posts = (props) => {
                     </Fragment>)
             }  
         </section>
+        
+        {/* TO DO */}
+        {/* Need to check the looping to see if this is correct. 
+        Want to loop over each post to see if each post belongs to the user and render it to the post page */}
+            
             
         <section> 
             <label>Search: </label>
