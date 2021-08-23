@@ -41,7 +41,7 @@ const CreateProfile = () => {
                         return true;
                     }
                 }
-                <button type="submit" name="event" class="button" onclick="return CreateProfile()">Create Profile</button>
+                <button type="submit" name="event" class="button" onSubmit={CreateProfile}>Create Profile</button>
             
                 </div>
                 
