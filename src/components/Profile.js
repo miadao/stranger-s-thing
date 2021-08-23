@@ -15,6 +15,7 @@ const Profile = () => {
 
             <section className="MessageToMe"> 
                 <h1>Message to Me: </h1>  
+                {/* messageListToMe.map((message) => )*/}
             </section>
 
             <section className="MessageFromMe">
