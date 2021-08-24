@@ -4,12 +4,10 @@ export async function fetchData() {
     try {
         const response = await fetch(BASE_URL);
         const data = await response.json();
+        console.log(data);
     } catch (err) {
         console.error(err);
     }
 }
+fetchData();
 
-// const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
-// fetch(`${BASE_URL}/users/`).then(res => res.json())
-//   .then(result => console.log(result))
-//   .catch(err => console.error(err));
