@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router,
 Route,
-Link,
 Switch
 } from 'react-router-dom';
 
@@ -44,6 +43,11 @@ const App =()=> {
                             posts={posts}
                             setPosts={setPosts}/>
 
+                        <Edit/>
+                        <Search/>
+                        <Delete/>
+                        <SendMessage/>
+
                     </Route>
 
                     <Route path="/AddPost">
@@ -76,15 +80,6 @@ const App =()=> {
 
                 </Switch>
             </div>
-
-
-            
-            <Edit/>
-            <Search/>
-            <Delete/>
-
-            <SendMessage/>
-
         </Router>
      </div>
 }
