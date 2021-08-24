@@ -17,7 +17,8 @@ Search,
 SendMessage,
 Home,
 Profile,
-Edit
+Edit,
+Delete
 } from './components';
 
 
@@ -80,7 +81,7 @@ const App =()=> {
             
             <Edit/>
             <Search/>
-
+            <Delete/>
 
             <SendMessage/>
 
