@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { BASE_URL } from '../api';
 
-const AddPost = ({post, setPost, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
+const AddPost = ({posts, setPosts, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
 
         const handleSubmit = async (event) => {
             event.preventDefault();
+            try {
             const response = await fetch(`${BASE_URL}/posts`, {
                 method: 'POST',
                 headers:{
@@ -20,28 +21,34 @@ const AddPost = ({post, setPost, title, setTitle, description, setDescription, p
             })
             const post = await response.json();
             console.log("post: ", post);
-            setPost([post, ...post]);
+            setPosts([post, ...posts]);
             setTitle('');
             setDescription('');
             setPrice('');
             setLocation('');
-            setWillDeliver(null);
+            setWillDeliver(false);
+        } catch (err) {
+            console.error(err);
+        }
         };
 
     return (
-        <section className="AddNewPosts"> 
-            <h1>Add New Posts</h1>
+        <section className="addNewPost"> 
+            <h1>Add New Post</h1>
                 <form onSubmit={handleSubmit}>
-                    <label> Title: </label>
-                    <input type="text" value={title} onChange={(event)=>setTitle(event.target.value)}/>
-                    <label> Description: </label>
-                    <input type="text" value={description}/>
-                    <label> Price: </label>
-                    <input type="text" value={price}/>
-                    <label> Location: </label>
-                    <input type="text" value={location}/>
-                    <input type="checkbox" value={willDeliver}/>
-                    <label>Willing to Deliver?</label>
+                    <input type="text" value={title} placeholder="Title" onChange={(event)=>setTitle(event.target.value)}/>
+                    <br/>
+                    <input type="text" value={description} placeholder="Description" onChange={(event)=>setDescription(event.target.value)}/>
+                    <br/>
+                    <input type="text" value={price} placeholder="Price" onChange={(event)=>setPrice(event.target.value)}/>
+                    <br/>
+                    <input type="text" value={location} placeholder="Location" onChange={(event)=>setLocation(event.target.value)}/>
+                    <br/>
+                    <label>
+                        <input type="checkbox" value={willDeliver} onChange={(event)=>setWillDeliver(event.target.value)}/>
+                        Willing to Deliver?
+                    </label>
+                    <br/>
                     <button type="submit">Create Post</button>                    
                 </form>
         </section>

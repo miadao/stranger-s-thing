@@ -23,19 +23,20 @@ Delete
 
 const App =()=> {
 
-   
     const [posts, setPosts] = useState([])
     const [authenticated, setAuthenticated] = useState(false);
     const {LoginSuccess, setLoginSuccess} = useState(false);
     const [username, setUsername] = useState(false);
     const [password, setPassword] = useState(false);
     const [ConfirmPassword, setConfirmPassword] = useState(false);
-    
-   
-   
+    const [title, setTitle] = useState('');
+    const [price, setPrice] = useState('');
+    const [location, setLocation] = useState('');
+    const [willDeliver, setWillDeliver] = useState(false);
+    const [description, setDescription] = useState('');
+
     return <div className="app"> 
         
-
         <Router>
             
             <div>
