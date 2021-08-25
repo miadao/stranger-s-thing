@@ -41,15 +41,15 @@ const App =()=> {
             <div>
                 <Header/>
                 <Switch>
-                    <Route path="/Posts">
+                    <Route exact path="/posts">
                         <Posts 
                             posts={posts}
                             setPosts={setPosts}/>
 
-                        <Edit/>
+                        {/* <Edit/>
                         <Search/>
                         <Delete/>
-                        <SendMessage/>
+                        <SendMessage/> */}
 
                     </Route>
 

@@ -19,7 +19,7 @@ const Posts = () => {
                 }
             })  
             const data = await response.json();
-            setPosts(data);
+            setPosts(data.data.posts);
         }
         fetchPosts();
         
@@ -34,25 +34,29 @@ const Posts = () => {
         <section className="AllPosts">
             <h1>Posts</h1>
             {
-                posts &&  posts.length > 0 
-                ? posts.map((post) => <div key={post.id}>
+                posts &&  
+                 posts.map((post) => <div key={post.id}>
                         <h1>{post.description}</h1>
                         <h2>{post.price}</h2>
                         <h3>{post.seller}</h3>
                         <h4>{post.location}</h4>
                    </div>
                 )
-                :
-                null
+                
             } 
         </section>
           
-        
+          {/* //extract isAuthor from data */}
+
+          <section className="DeletePost">
+            <Link to="/delete"><button className="DeletePost">Delete Post</button></Link>
+        </section> 
         
            
         <section className="AddingPost">
-            <Link to="/AddPost"><button className="AddPost">Add Post</button></Link>
+            <Link to="/addPost"><button className="AddPost">Add Post</button></Link>
         </section>  
+
     </div>
     )
 }
