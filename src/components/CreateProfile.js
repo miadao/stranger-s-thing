@@ -1,20 +1,25 @@
-const CreateProfile = (props) => {
-    const {username, password} = props;
+const CreateProfile = ({username, password, ConfirmPassword} ) => {
+
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
-        fetch(`${BASE_URL}/users/register`, {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: {
-                    "username": `${username}`,
-                    "password": `${password}`
-                }
-            })
-        }).then(res => res.json())
-          .then(result => console.log(result))
-          .catch(err => console.error(err));
+    
+    const handleCreateProfile = async (event) => {
+        event.preventDefault();
+        if (password === ConfirmPassword) {
+            const response = await fetch(`${BASE_URL}/users/register`, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: {
+                        "username": `${username}`,
+                        "password": `${password}`
+                    }
+                }) 
+            }) 
+        }
+    }
+    
 
     return (
         <section className="CreateProfile"> 
@@ -32,20 +37,15 @@ const CreateProfile = (props) => {
 
                 <div>
                     <label> Confirm Password: </label>
-                    <input type="text" name="password"/>
+                    <input type="text" name={`${ConfirmPassword}`}/>
                 </div>
 
-                <div id="CreateProfileButton"> 
-                {
-                    function CreateProfile() {
-                        document.getElementById("CreateProfileButton").style.display="none";
-                        return true;
-                    }
-                }
-                <button type="submit" name="event" class="button" onSubmit={CreateProfile}>Create Profile</button>
+                
+                
+                <button type="click" name="event" class="button" onClick={handleCreateProfile}>Create Profile</button>
                
             
-                </div>
+               
                 
             </section>
     )  

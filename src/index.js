@@ -27,6 +27,9 @@ const App =()=> {
     const [posts, setPosts] = useState([])
     const [authenticated, setAuthenticated] = useState(false);
     const {LoginSuccess, setLoginSuccess} = useState(false);
+    const [username, setUsername] = useState(false);
+    const [password, setPassword] = useState(false);
+    const [ConfirmPassword, setConfirmPassword] = useState(false);
     
    
    
@@ -63,7 +66,15 @@ const App =()=> {
                     </Route>
 
                     <Route path="/CreateProfile"> 
-                        <CreateProfile />
+                        <CreateProfile 
+                            username={username}
+                            password={password}
+                            ConfirmPassword={ConfirmPassword}
+                            setUsername={setUsername}
+                            setPassword={setPassword}
+                            setConfirmPassword={setConfirmPassword}
+
+                        />
                     </Route>
 
                     <Route path="/Profile">

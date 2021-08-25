@@ -1,4 +1,4 @@
-export const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt-class/posts';
+export const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt';
 
 export async function fetchData() {
     try {
@@ -11,3 +11,20 @@ export async function fetchData() {
 }
 fetchData();
 
+
+// export async function fetchSearchResults({
+//     title, 
+//     location, 
+//     title, 
+//     price,
+// }) {
+//     const url = `${BASE_URL}/posts`
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+
+//         return data;
+//     }catch (error){
+//         throw error;
+//     }
+// }
