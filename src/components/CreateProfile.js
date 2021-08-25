@@ -27,14 +27,8 @@ const CreateProfile = () => {
     }
     
 
-    return (<form id="CreateProfile" onSubmit={async (event) => {
-        event.preventDefault()
-        handleCreateProfile()
-
-        
-        }
-
-        }>
+    return (<form> 
+       
         
         <fieldset>
             <label htmlFor="Username">Create Username</label>
@@ -58,13 +52,16 @@ const CreateProfile = () => {
                 value={ConfirmPassword}
             />
 
-            <button onClick={
+            <button onClick={(event)=> {
+                
+                handleCreateProfile(event.target)
+                }
                 
             }> Create Profile </button>
 
 
         </fieldset>
-            
+            {console.log("A")}
         </form>
     )  
 }
