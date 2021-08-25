@@ -1,5 +1,9 @@
-const CreateProfile = ({username, password, ConfirmPassword} ) => {
+import React, { useState } from 'react';
 
+const CreateProfile = () => {
+    const [username, setUsername] = useState([])
+    const [password, setPassword] = useState([])
+    const [ConfirmPassword, setConfirmPassword] = useState([])
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     
     const handleCreateProfile = async (event) => {
@@ -17,37 +21,51 @@ const CreateProfile = ({username, password, ConfirmPassword} ) => {
                     }
                 }) 
             }) 
+            const data = await response.json();
+            console.log(data)
         }
     }
     
 
-    return (
-        <section className="CreateProfile"> 
-            <h1>Create Your Profile</h1>
+    return (<form id="CreateProfile" onSubmit={async (event) => {
+        event.preventDefault()
+        handleCreateProfile()
+
+        
+        }
+
+        }>
+        
+        <fieldset>
+            <label htmlFor="Username">Create Username</label>
+            <input
+                id="username"
+                type="text"
+                value={username}
+            />
+
+            <label htmlFor="Password">Create Password</label>
+            <input
+                id="password"
+                type="text"
+                value={password}
+            />
+
+            <label htmlFor="Confirm Password">Confirm Password</label>
+            <input
+                id="confirmPassword"
+                type="text"
+                value={ConfirmPassword}
+            />
+
+            <button onClick={
+                
+            }> Create Profile </button>
+
+
+        </fieldset>
             
-                <div>
-                    <label> Choose Username: </label>
-                    <input type="text" name={`${username}`}/>
-                </div>
-
-                <div>
-                    <label> Choose Password: </label>
-                    <input type="text" name={`${password}`}/>
-                </div>
-
-                <div>
-                    <label> Confirm Password: </label>
-                    <input type="text" name={`${ConfirmPassword}`}/>
-                </div>
-
-                
-                
-                <button type="click" name="event" class="button" onClick={handleCreateProfile}>Create Profile</button>
-               
-            
-               
-                
-            </section>
+        </form>
     )  
 }
 

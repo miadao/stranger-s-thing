@@ -42,7 +42,7 @@ const Login = ({setAuthenticated, username, password}) => {
     }
 
     if(LoginSuccess){
-        return <Redirect to="/Posts"/>
+        return <Redirect to="/posts"/>
 
     }return (
         <section className="login"> 

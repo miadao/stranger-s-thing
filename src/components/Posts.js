@@ -48,7 +48,10 @@ const Posts = () => {
           
           {/* //extract isAuthor from data */}
 
-          <section className="DeletePost">
+        <section className="DeletePost">
+            {
+                
+            }
             <Link to="/delete"><button className="DeletePost">Delete Post</button></Link>
         </section> 
         

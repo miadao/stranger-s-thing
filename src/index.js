@@ -53,11 +53,11 @@ const App =()=> {
 
                     </Route>
 
-                    <Route path="/AddPost">
+                    <Route path="/addPost">
                         <AddPost/>
                     </Route>
 
-                    <Route path="/Login">
+                    <Route path="/login">
                         <Login 
                             authenticated={authenticated}
                             setAuthenticate={setAuthenticated}
@@ -65,7 +65,7 @@ const App =()=> {
                             setLoginSuccess={setLoginSuccess}/>
                     </Route>
 
-                    <Route path="/CreateProfile"> 
+                    <Route path="/createProfile"> 
                         <CreateProfile 
                             username={username}
                             password={password}
@@ -77,7 +77,7 @@ const App =()=> {
                         />
                     </Route>
 
-                    <Route path="/Profile">
+                    <Route path="/profile">
                         <Profile />
                     </Route>
 
