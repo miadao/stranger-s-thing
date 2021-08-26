@@ -11,7 +11,6 @@ export async function fetchData() {
 }
 fetchData();
 
-
 // export async function fetchSearchResults({
 //     title, 
 //     location, 
