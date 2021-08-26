@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { BASE_URL } from '../api';
 
-const AddPost = ({posts, setPosts, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
+const AddPost = () => {
+        const [title, setTitle] = useState([])
+        const [description, setDescription] = useState([])
+        const [price, setPrice] = useState([])
+        const [location, setLocation] = useState([])
+        const [willDeliver, setWillDeliver] = useState([])
 
         const handleSubmit = async (event) => {
             event.preventDefault();

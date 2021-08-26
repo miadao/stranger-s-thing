@@ -35,6 +35,7 @@ const App =()=> {
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
     const [message, setMessage]= useState([])
+    const [profile, setProfile] = useState([])
 
 
     return <div className="app"> 
@@ -103,6 +104,8 @@ const App =()=> {
                          setUsername={setUsername}
                          message={message}
                          setMessage={setMessage}
+                         profile={profile}
+                         setProfile={setProfile}
 
                         />
                     </Route>

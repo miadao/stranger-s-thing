@@ -55,3 +55,10 @@ li {
     border: 1px solid;
     margin: 2%;
 }
+
+.CreateUsername, .CreatePassword {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+}
