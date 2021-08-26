@@ -16,8 +16,7 @@ Search,
 SendMessage,
 Home,
 Profile,
-Edit,
-Delete
+Edit
 } from './components';
 
 
@@ -60,11 +59,6 @@ const App =()=> {
 
                     <Route path="/search">
                         <Search/>  
-                    </Route>
-                        
-
-                    <Route path="delete">
-                        <Delete/>
                     </Route>
                         
 

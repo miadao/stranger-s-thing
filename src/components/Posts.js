@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Edit } from '.';
 import SendMessage from './SendMessage';
+import { handleDelete } from '../api';
 
 const Posts = () => {
     
@@ -45,9 +46,21 @@ const Posts = () => {
                         <h4>{post.author.username}</h4>
                         <h5>{post.location}</h5>
                         <br></br>
-                        <h6>{post.isAuthor === false ? <SendMessage/> : null}</h6>   
-                        <h7>{post.isAuthor === true  ? <Edit/>: null}</h7>  
-                        <h8>{post.isAuthor === true  ? <Delete/>: null}</h8>  
+                        <h6>{post.isAuthor === false ? 
+                            <SendMessage/> 
+                            : 
+                            null}
+                        </h6>   
+                        <h7>{post.isAuthor === true  ? 
+                            <Edit/>
+                            : 
+                            null}
+                        </h7>  
+                        <h8>{post.isAuthor === true ? 
+                            <button type="click" name="event" class="button" onClick={handleDelete(post.id)}>Delete Post</button>
+                            : 
+                            null}
+                        </h8>  
                     </section>
                 </div>)
             } 
