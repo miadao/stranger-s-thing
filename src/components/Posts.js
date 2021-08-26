@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Edit } from '.';
 import SendMessage from './SendMessage';
-import { handleDelete } from '../api';
 
 const Posts = () => {
     

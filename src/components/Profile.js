@@ -22,7 +22,7 @@ const Profile = () => {
             <section className="WelcomeUser"> 
                 <h1>Welcome: </h1>
                 {
-                    <h1>{}</h1>
+                   
                 } 
             </section>
 
@@ -37,6 +37,9 @@ const Profile = () => {
 
             <section className="MessageFromMe">
                 <h1>Message from Me: </h1>
+                {
+
+                }
             </section>
 
         </div>
