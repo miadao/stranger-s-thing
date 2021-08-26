@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-
+import { Edit } from '.';
+import SendMessage from './SendMessage';
 
 const Posts = () => {
+    
     const [posts, setPosts] = useState([]);
 
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
@@ -31,37 +32,28 @@ const Posts = () => {
     
     return  ( <div className="Posts">
           
-        <section className="AllPosts">
+       
             <h1>Posts</h1>
+            <h2><Link to="/addpost"> <button> Add Posts</button></Link></h2>
             {
                 posts &&  
-                 posts.map((post) => <div key={post.id}>
-                        <h1>{post.description}</h1>
-                        <h2>{post.price}</h2>
-                        <h3>{post.seller}</h3>
-                        <h4>{post.location}</h4>
-                   </div>
-                )
-                
+                 posts.map((post) => <div key={post.id} >
+                    <section className="AllPosts">
+                        <h1>{post.title} </h1>
+                        <h2>{post.description}</h2>
+                        <h3>{post.price}</h3>
+                        <h4>{post.author.username}</h4>
+                        <h5>{post.location}</h5>
+                        <br></br>
+                        <h6>{post.isAuthor === false ? <SendMessage/> : null}</h6>   
+                        <h7>{post.isAuthor === true  ? <Edit/>: null}</h7>  
+                        <h8>{post.isAuthor === true  ? <Delete/>: null}</h8>  
+                    </section>
+                </div>)
             } 
-        </section>
-          
-          {/* //extract isAuthor from data */}
-
-        <section className="DeletePost">
-            {
-                
-            }
-            <Link to="/delete"><button className="DeletePost">Delete Post</button></Link>
-        </section> 
-        
-           
-        <section className="AddingPost">
-            <Link to="/addPost"><button className="AddPost">Add Post</button></Link>
-        </section>  
-
     </div>
     )
 }
+
 
 export default Posts;

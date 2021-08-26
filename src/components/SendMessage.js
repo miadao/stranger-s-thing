@@ -38,7 +38,7 @@ const SendMessage = (props) => {
                             return true;
                         }
                     }
-                    <button type="click" name="event" class="button" onClick={SendMessage}>Edit Post</button>
+                    <button type="click" name="event" class="button" onClick={SendMessage}>Send Message</button>
                 
                     </div>
                     

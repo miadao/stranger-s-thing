@@ -50,3 +50,8 @@ li {
 .AddPost {
     margin-left: 5%;
 }
+
+.AllPosts{
+    border: 1px solid;
+    margin: 2%;
+}

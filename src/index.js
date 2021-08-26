@@ -34,6 +34,8 @@ const App =()=> {
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
+    const [message, setMessage]= useState([])
+
 
     return <div className="app"> 
         
@@ -47,12 +49,29 @@ const App =()=> {
                             posts={posts}
                             setPosts={setPosts}/>
 
-                        {/* <Edit/>
-                        <Search/>
-                        <Delete/>
-                        <SendMessage/> */}
+                       
 
                     </Route>
+
+                    <Route path="/edit">
+                        <Edit/>
+                    </Route>
+                        
+
+                    <Route path="/search">
+                        <Search/>  
+                    </Route>
+                        
+
+                    <Route path="delete">
+                        <Delete/>
+                    </Route>
+                        
+
+                    <Route path="sendmessage">
+                        <SendMessage/>
+                    </Route>
+                        
 
                     <Route path="/addPost">
                         <AddPost/>
@@ -79,7 +98,13 @@ const App =()=> {
                     </Route>
 
                     <Route path="/profile">
-                        <Profile />
+                        <Profile 
+                         username={username}
+                         setUsername={setUsername}
+                         message={message}
+                         setMessage={setMessage}
+
+                        />
                     </Route>
 
                     <Route exact path="/">
