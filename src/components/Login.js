@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-const Login = ({setAuthenticated, username, password}) => {
+const Login = ({username, password}) => {
    
-    const {LoginSuccess, setLoginSuccess} = useState(false);
-   
-    function authenticate(event){
-        event.preventDefault();  
+    const [LoginSuccess, setLoginSuccess] = useState(false);
+    
+    const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
+
+    const authenticate = (event) => {
+        event.preventDefault();  
         //LOGIC
         //check for inputs
         //validate the username and password
-        
-
         //make AJAX request to server, then server will send back response if user is authenticated 
-        const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
+        
         fetch(`${BASE_URL}/users/login`, {
             method: "POST",
             headers: {
@@ -22,8 +22,8 @@ const Login = ({setAuthenticated, username, password}) => {
             },
             body: JSON.stringify({
                 user: {
-                    username: `${username}`,
-                    password: `${password}`
+                    "username": username,
+                    "password": password
                 }
             })
         }).then(response => response.json())
@@ -31,23 +31,19 @@ const Login = ({setAuthenticated, username, password}) => {
             console.log(result);
             })
             .catch(console.error);
-
-        //write setAuthenticated Function
-        //if authenticated, re-directed to home page
-        //if not authenicated, display the message to user's screen 
-        
         console.log('Login Success!')
         setLoginSuccess(true);
         
     }
 
     if(LoginSuccess){
-        return <Redirect to="/posts"/>
+        return <Redirect to="/profile"/>
 
     }return (
         <section className="login"> 
             <h1>Login</h1>
-            <form onSubmit={authenticate}>
+            <form onSubmit={authenticate}
+            >
                 <div>
                     <label>Username: </label>
                     <input type="text"/>
@@ -57,11 +53,6 @@ const Login = ({setAuthenticated, username, password}) => {
                     <input type="text"/>
                 </div>
                 <button type="submit">Login</button>
-                
-                {/* Logic goes here if username and password match database, Login to prompt the user's 
-                screen that reads "Login Successfully" */}
-
-
                 <Link className="CreateProfile" to="/CreateProfile">Don't have an account? Sign Up!</Link>
             </form>
             </section>

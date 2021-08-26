@@ -1,73 +1,84 @@
 import React, { useState } from 'react';
 
 const CreateProfile = () => {
-    const [username, setUsername] = useState([])
-    const [password, setPassword] = useState([])
-    const [ConfirmPassword, setConfirmPassword] = useState([])
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [ConfirmPassword, setConfirmPassword] = useState('')
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     
-    // const handleCreateProfile = async (event) => {
-    //     event.preventDefault();
-        
-    // }
+    const createAProfile = async ()=> { 
+        const response = await fetch(`${BASE_URL}/users/register`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user: {
+                "username": username,
+                "password": password
+                }   
+            }) 
+        }) 
+        console.log(`${BASE_URL}/users/register`)
+        const data = await response.json();
+        setUsername('')
+        setPassword('')
+     }
+
     
+    const checkPassword = () => {
+        if (password === ConfirmPassword) {
+            createAProfile()
+        } else {
+            alert("Password do not match, please try again")
+        }
+    }
 
-    return (<form> 
-        <fieldset>
-            <label htmlFor="Username">Create Username</label>
-            <input
-                className="CreateUsername"
-                id="username"
-                type="text"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-            />
+    return (
 
-            <label htmlFor="Password">Create Password</label>
-            <input
-                className="CreatePassword"
-                id="password"
-                type="text"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-            />
+        <form onSubmit={(event)=> {
+            event.preventDefault()
+            console.log("B")
+            checkPassword(createAProfile)
+            }}> 
 
-            <label htmlFor="Confirm Password">Confirm Password</label>
-            <input
-                className="CreatePassword"
-                id="confirmPassword"
-                type="text"
-                value={ConfirmPassword}
-                onChange={(event) => setConfirmPassword(event.target.value)}
-            />
-            <br></br>
-            <button onSubmit={(event)=> {
-                event.preventDefault()
-                if (password === ConfirmPassword) {
-                    fetch(`${BASE_URL}/users/register`, {
-                        method: 'POST',
-                        headers:{
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            user: {
-                                "username": document.getElementById("username"),
-                                "password": document.getElementById("password")
-                            }
-                        }) 
-                    }) 
-                    setUsername('')
-                    setPassword('')
-                    setConfirmPassword('')
-                } else {
-                    alert("Password do not match, please try again")
-                }
-            }}> Create Profile </button>
+            <fieldset>
+                <label htmlFor="Username">Create Username</label>
+                <input
+                    className="CreateUsername"
+                    id="username"
+                    type="text"
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                />
 
+                <label htmlFor="Password">Create Password</label>
+                <input
+                    className="CreatePassword"
+                    id="password"
+                    type="text"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                />
 
-        </fieldset>
-            {console.log("A")}
-        </form>
+                <label htmlFor="Confirm Password">Confirm Password</label>
+                <input
+                    className="CreatePassword"
+                    id="confirmPassword"
+                    type="text"
+                    value={ConfirmPassword}
+                    onChange={(event) => setConfirmPassword(event.target.value)}
+                />
+                <br></br>
+                <button 
+                    type="submit" 
+                    name="event" 
+                    > Create Profile 
+                </button>
+
+            </fieldset>
+                {console.log("A")}
+     </form>
     )  
 }
 
