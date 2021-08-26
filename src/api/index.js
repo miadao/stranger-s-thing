@@ -11,23 +11,6 @@ export async function fetchData() {
 }
 fetchData();
 
-export async function handleDelete (postIdToDelete) {
-    try {
-      console.log('postIdToDelete: ', postIdToDelete)
-      const response = await fetch(`${BASE_URL}/posts/${postIdToDelete}`, {
-        method: "DELETE",
-      })
-      const data = await response.json();
-      console.log('data: ', data)
-      if (data) {
-        const newPosts = posts.filter(post => post.id !== postIdToDelete);
-        setPosts(newPosts);
-        console.log("Message deleted.")
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
 // export async function fetchSearchResults({
 //     title, 
 //     location, 
