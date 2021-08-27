@@ -4,7 +4,8 @@ const EditPost = (props) => {
     const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
 
   async function editPost() {
-      fetch(`${BASE_URL}/posts/${POST_ID}`, {
+    try {
+      const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
           method: "PATCH",
           headers: {
             'Content-Type': 'application/json',
@@ -19,12 +20,16 @@ const EditPost = (props) => {
               willDeliver: true
             }
           })
-        }).then(response => response.json())
-          .then(result => {
-            console.log(result);
-          })
-          .catch(console.error);
+        })
+        const data = response.json()
+        console.log(data);
+        if (data && data.title) {
+          
+        }
+          } catch (er) {
+            console.error(er);
           }
+        }
 
 
           return (
@@ -63,7 +68,7 @@ const EditPost = (props) => {
                     placeholder={location} 
                     onChange={(event)=>setLocation(event.target.value)}/>
 
-                    <button id="EditPostButton" type="submit" name="event" class="button" onClick={editPost}>Edit Post</button>
+                    <button id="EditPostButton" type="submit" name="event" class="button">Edit Post</button>
                   </form>
                 </div>
           )  
