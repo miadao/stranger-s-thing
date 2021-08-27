@@ -2,7 +2,6 @@ const EditPost = (props) => {
     const {title, setTitle, description, setDescription, price, setPrice, location, setLocation} = props;
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
-    const POST_ID = "6122c95c83de380017138cdc"
 
   async function editPost() {
       fetch(`${BASE_URL}/posts/${POST_ID}`, {
@@ -13,10 +12,10 @@ const EditPost = (props) => {
           },
           body: JSON.stringify({
             post: {
-              title: `${title}`,
-              description: `${description}`,
-              price: `${price}`,
-              location: `${location}`,
+              title: title,
+              description: description,
+              price: price,
+              location: location,
               willDeliver: true
             }
           })
@@ -33,16 +32,37 @@ const EditPost = (props) => {
                   <h1>Edit Post</h1>
                   <form onSubmit={editPost}>
                     <label> Title: </label>
-                    <input type="text" value={title} placeholder={title} onChange={(event)=>setTitle(event.target.value)}/>
+                    <input 
+                    type="text" 
+                    name="title" 
+                    value={title} 
+                    placeholder={title} 
+                    onChange={(event)=>setTitle(event.target.value)}/>
 
                     <label> Description: </label>
-                    <input type="text" name={description} placeholder="Description" onChange={(event)=>setDescription(event.target.value)}/>
+                    <input 
+                    type="text" 
+                    name="description" 
+                    value={description} 
+                    placeholder={description} 
+                    onChange={(event)=>setDescription(event.target.value)}/>
 
                     <label> Price: </label>
-                    <input type="text" name={{price}}/>
+                    <input 
+                    type="text" 
+                    name="price" 
+                    value={price} 
+                    placeholder={price} 
+                    onChange={(event)=>setPrice(event.target.value)}/>
 
                     <label> Location: </label>
-                    <input type="text" name={{location}}/>
+                    <input 
+                    type="text" 
+                    name="location" 
+                    value={location} 
+                    placeholder={location} 
+                    onChange={(event)=>setLocation(event.target.value)}/>
+
                     <button id="EditPostButton" type="submit" name="event" class="button" onClick={editPost}>Edit Post</button>
                   </form>
                 </div>
