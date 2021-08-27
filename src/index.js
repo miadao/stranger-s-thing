@@ -14,7 +14,6 @@ Login,
 Posts,
 Search,
 SendMessage,
-Home,
 Profile,
 Edit
 } from './components';
@@ -104,9 +103,7 @@ const App =()=> {
                         />
                     </Route>
 
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
+                   
 
                     <Route path="*">
                         <h1>404 Error - Page Not Found!</h1>

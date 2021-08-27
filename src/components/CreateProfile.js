@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const CreateProfile = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [ConfirmPassword, setConfirmPassword] = useState('')
+    const [profileCreated, setProfileCreated] = useState(false)
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     
     const createAProfile = async ()=> { 
@@ -23,6 +25,7 @@ const CreateProfile = () => {
         const data = await response.json();
         setUsername('')
         setPassword('')
+        setProfileCreated(true)
      }
 
     
@@ -33,14 +36,23 @@ const CreateProfile = () => {
             alert("Password do not match, please try again")
         }
     }
+    if(profileCreated){
+        return (
+            alert("Profile created! Please log in!"),
+            <Redirect to="/login"/>
+        )
+
+    }
 
     return (
 
         <form onSubmit={(event)=> {
             event.preventDefault()
             console.log("B")
-            checkPassword(createAProfile)
+            checkPassword()
             }}> 
+            
+            
 
             <fieldset>
                 <label htmlFor="Username">Create Username</label>
