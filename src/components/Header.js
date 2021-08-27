@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+
+const Header = ({loginSuccess}) => {
+   
+    const logOut = () => {
+        console.log("loggingout")
+        localStorage.removeItem("token")
+        
+    }
+
     return (
         <div className="header">
             <section className="title"> 
@@ -10,10 +18,10 @@ const Header = () => {
             <section className="links"> 
                 <nav>
                     <ul>
-                        <li> <Link to="/">Home</Link></li>
-                        <li> <Link to="/posts">Posts</Link></li>
-                        <li> <Link to="/login">Login</Link></li>
-                        <li> <Link to="/profile">Profile</Link></li>
+                        <li> <Link to="/posts">Posts</Link> </li>
+                        <li> { !loginSuccess ? <Link to="/login">Login</Link> : <Link to="/login">Logout2</Link> } </li>
+                        <li> <Link to="/logout">Logout1</Link> </li>
+                        <li> { loginSuccess && <Link to="/profile">Profile</Link> }</li>
                     </ul>
                 </nav>
             </section>
@@ -22,3 +30,4 @@ const Header = () => {
 }
 
 export default Header;
+

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router,
 Route,
-Switch
+Switch,
+Redirect
 } from 'react-router-dom';
 
 
@@ -15,7 +16,7 @@ Posts,
 Search,
 SendMessage,
 Profile,
-Edit
+Edit,
 } from './components';
 
 
@@ -23,7 +24,7 @@ const App =()=> {
 
     const [posts, setPosts] = useState([])
     const [authenticated, setAuthenticated] = useState(false);
-    const {LoginSuccess, setLoginSuccess} = useState(false);
+    const [loginSuccess, setLoginSuccess] = useState(false);
     const [username, setUsername] = useState(false);
     const [password, setPassword] = useState(false);
     const [ConfirmPassword, setConfirmPassword] = useState(false);
@@ -34,49 +35,71 @@ const App =()=> {
     const [description, setDescription] = useState('');
     const [message, setMessage]= useState([])
     const [profile, setProfile] = useState([])
+    const [token, setToken] = useState('')
 
+    useEffect (() => {
+        console.log("useEffect")
+        if (localStorage.getItem("token")) {
+            setToken(localStorage.getItem("token"))
+        }
+    }, [loginSuccess])
+    console.log("token", token)
+    console.log("JSX")
 
     return <div className="app"> 
         
         <Router>
             
             <div>
-                <Header/>
+                <Header 
+                    loginSuccess={loginSuccess}/>
+
                 <Switch>
                     <Route exact path="/posts">
+
                         <Posts 
                             posts={posts}
                             setPosts={setPosts}/>
-
-                       
-
+                        
                     </Route>
 
                     <Route path="/edit">
+
                         <Edit/>
+                       
                     </Route>
                         
 
                     <Route path="/search">
-                        <Search/>  
+
+                        <Search/>
+                         
                     </Route>
                         
 
                     <Route path="sendmessage">
+
                         <SendMessage/>
+                        
                     </Route>
                         
 
                     <Route path="/addPost">
-                        <AddPost/>
-                    </Route>
 
+                        <AddPost/>
+                        
+                    </Route>
+                    {
+                        console.log(setAuthenticated)
+                    }
                     <Route path="/login">
+
                         <Login 
                             authenticated={authenticated}
                             setAuthenticate={setAuthenticated}
-                            LoginSuccess={LoginSuccess}
+                            loginSuccess={loginSuccess}
                             setLoginSuccess={setLoginSuccess}/>
+                        
                     </Route>
 
                     <Route path="/createProfile"> 
@@ -86,10 +109,9 @@ const App =()=> {
                             ConfirmPassword={ConfirmPassword}
                             setUsername={setUsername}
                             setPassword={setPassword}
-                            setConfirmPassword={setConfirmPassword}
-
-                        />
+                            setConfirmPassword={setConfirmPassword}/>  
                     </Route>
+
 
                     <Route path="/profile">
                         <Profile 
@@ -98,14 +120,22 @@ const App =()=> {
                          message={message}
                          setMessage={setMessage}
                          profile={profile}
-                         setProfile={setProfile}
+                         setProfile={setProfile}/>
+                    </Route>
 
-                        />
+                    <Route path="/logout">
+                        <Redirect to="/login"/>
+                        
                     </Route>
 
                    <Route path="/">
-                        <Login/>
+                        <Login
+                        authenticated={authenticated}
+                        setAuthenticate={setAuthenticated}
+                        loginSuccess={loginSuccess}
+                        setLoginSuccess={setLoginSuccess}/>
                    </Route>
+
 
                     <Route path="*">
                         <h1>404 Error - Page Not Found!</h1>

@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-const Login = ({username, password}) => {
+const Login = (props) => {
+   console.log(props)
    
-    const [LoginSuccess, setLoginSuccess] = useState(false);
-    
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
-
+    
     const authenticate = (event) => {
+       
         event.preventDefault();  
         //LOGIC
         //check for inputs
@@ -22,21 +21,23 @@ const Login = ({username, password}) => {
             },
             body: JSON.stringify({
                 user: {
-                    "username": username,
-                    "password": password
+                    "username": event.target[0].value,
+                    "password": event.target[1].value
                 }
             })
-        }).then(response => response.json())
-            .then(result => {
+        })
+        .then(response => response.json())
+        .then(result => {
             console.log(result);
-            })
-            .catch(console.error);
-        console.log('Login Success!')
-        setLoginSuccess(true);
+            localStorage.setItem("token", result.data.token)
+            props.setLoginSuccess(true);
+        })
+        .catch(console.error);
+    
         
     }
 
-    if(LoginSuccess){
+    if(props.loginSuccess===true){
         return <Redirect to="/profile"/>
 
     }return (
@@ -53,7 +54,7 @@ const Login = ({username, password}) => {
                     <input type="text"/>
                 </div>
                 <button type="submit">Login</button>
-                <Link className="CreateProfile" to="/CreateProfile">Don't have an account? Sign Up!</Link>
+                <Link className="CreateProfile" to="/createProfile">Don't have an account? Sign Up!</Link>
             </form>
             </section>
     )

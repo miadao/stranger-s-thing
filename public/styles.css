@@ -5,17 +5,14 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.header {
+.header, .header2 {
     background-color: aquamarine;
     border: 2px solid;
   
 }
 
-section {
-    height: 100%;
-}
 
-.title {
+.title, .title2 {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -23,7 +20,7 @@ section {
     
 }
 
-.links {
+.links, .links2 {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

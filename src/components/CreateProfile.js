@@ -17,12 +17,14 @@ const CreateProfile = () => {
             body: JSON.stringify({
                 user: {
                 "username": username,
-                "password": password
+                "password": password,
+                
                 }   
             }) 
         }) 
         console.log(`${BASE_URL}/users/register`)
         const data = await response.json();
+        console.log(data)
         setUsername('')
         setPassword('')
         setProfileCreated(true)
