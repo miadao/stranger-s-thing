@@ -103,7 +103,9 @@ const App =()=> {
                         />
                     </Route>
 
-                   
+                   <Route path="/">
+                        <Login/>
+                   </Route>
 
                     <Route path="*">
                         <h1>404 Error - Page Not Found!</h1>
