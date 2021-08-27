@@ -1,10 +1,13 @@
-const SendMessage = (props) => {
-    const {message} = props;
+import React, { useState } from 'react';
+const SendMessage = () => {
+    const [messages, setMessages] = useState([]);
 
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
-    const POST_ID = "6122c95c83de380017138cdc"
-    fetch(`${BASE_URL}/posts/${POST_ID}/messages`, {
+    
+    const  SendMessages = async (event) => {
+      event.preventDefault();
+      const response = await fetch(`${BASE_URL}/posts/POST_ID/messages`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -12,37 +15,37 @@ const SendMessage = (props) => {
         },
         body: JSON.stringify({
           message: {
-              content: `${message}`
+              content: document.getElementById("messages")
           }
         })
-      }).then(response => response.json())
-        .then(result => {
-          console.log(result);
-        })
-        .catch(console.error);
+      })
+      const data = await response.json();
+      setMessages([data])
 
+    }
+    
 
         return (
-            <section className="SendMessage"> 
+            <fieldset className="SendMessage"> 
                 <h1>Send Message</h1>
                 
-                    <div>
-                        <label> Message: </label>
-                        <input type="text" name={`${message}`}/>
-                    </div>
+                <div>
+                  <label> Message: </label>
+                  <input id ="messages" type="text" name={messages}/>
+                </div>
+
+                <br></br>
+
     
-                    <div id="SendMessageButton"> 
-                    {
-                        function SendMessage() {
-                            document.getElementById("SendMessageButton").style.display="none";
-                            return true;
-                        }
-                    }
-                    <button type="click" name="event" class="button" onClick={SendMessage}>Send Message</button>
-                
-                    </div>
+                  <div id="SendMessageButton"> 
+                    <button type="click" name="event" class="button" onSubmit={SendMessages
                     
-                </section>
+                    
+                    
+                    }>Send Message</button>
+                  </div>
+                    
+              </fieldset>
         )  
 
     
