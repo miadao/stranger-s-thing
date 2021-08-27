@@ -17,11 +17,13 @@ const AddPost = () => {
                     'Content-Type': 'Application/json'
                 },
                 body: JSON.stringify({
-                    title,
-                    description,
-                    price,
-                    location,
-                    willDeliver
+                    post: {
+                        title,
+                        description,
+                        price,
+                        location,
+                        willDeliver
+                }
                 })
             })
             const post = await response.json();
@@ -41,16 +43,16 @@ const AddPost = () => {
         <section className="addNewPost"> 
             <h1>Add New Post</h1>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" value={title} placeholder="Title" onChange={(event)=>setTitle(event.target.value)}/>
+                    <input type="text" name="title" value={title} placeholder="Title" onChange={(event)=>setTitle(event.target.value)}/>
                     <br/>
-                    <input type="text" value={description} placeholder="Description" onChange={(event)=>setDescription(event.target.value)}/>
+                    <input type="text" name="description" value={description} placeholder="Description" onChange={(event)=>setDescription(event.target.value)}/>
                     <br/>
-                    <input type="text" value={price} placeholder="Price" onChange={(event)=>setPrice(event.target.value)}/>
+                    <input type="text" name="price" value={price} placeholder="Price" onChange={(event)=>setPrice(event.target.value)}/>
                     <br/>
-                    <input type="text" value={location} placeholder="Location" onChange={(event)=>setLocation(event.target.value)}/>
+                    <input type="text" name="location" value={location} placeholder="Location" onChange={(event)=>setLocation(event.target.value)}/>
                     <br/>
                     <label>
-                        <input type="checkbox" value={willDeliver} onChange={(event)=>setWillDeliver(event.target.value)}/>
+                        <input type="checkbox" name="willDeliver" value={willDeliver} onChange={(event)=>setWillDeliver(event.target.value)}/>
                         Willing to Deliver?
                     </label>
                     <br/>
