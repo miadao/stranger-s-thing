@@ -1,4 +1,4 @@
-// export const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt';
+export const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt';
 
 // export async function fetchData() {
 //     try {
