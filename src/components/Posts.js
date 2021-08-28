@@ -15,8 +15,9 @@ const Posts = ({loginSuccess, username, posts, setPosts, messages, setMessages, 
        fetch (`${BASE_URL}/posts`)
           .then(response=> response.json())
           .then(data => {
+           
             setPosts(data.data.posts)})
-    
+            
     const filterPost = (post, text) => {
       if (post.title.toLowerCase().includes(text.toLowerCase())){
         return true
@@ -43,6 +44,7 @@ const Posts = ({loginSuccess, username, posts, setPosts, messages, setMessages, 
           </h2>
 
           
+          {loginSuccess ? <h3><Link to="/addpost"> <button> Add Posts</button></Link></h3> : null}
 
             {
               posts &&  
@@ -55,13 +57,13 @@ const Posts = ({loginSuccess, username, posts, setPosts, messages, setMessages, 
                     <h4> User: {post.author.username}</h4>
                     <h5> Location: {post.location}</h5>
                     <h6> Deliver: {post.willDeliver ? "Yes" : "No"}</h6>
-                   
-                     {loginSuccess && post.author.username === username ? <Delete postid={post._id} token={token}/> : null}  
-                     {loginSuccess && post.author.username === username ? <Edit/> : null}  
-                     {loginSuccess ? <SendMessage postID={post._id} messages={messages} setMessages={setMessages} token={token}/> : null}  
-                     {loginSuccess && post.author.username === username ? <h3><Link to="/addpost"> <button> Add Posts</button></Link></h3> : null}
-                      
+
+                    {loginSuccess ? <SendMessage postID={post._id} messages={messages} setMessages={setMessages} token={token}/>: null} 
+                    {loginSuccess && post.author.username === username ? <Delete postid={post._id} token={token}/> : null}  
+                    {loginSuccess && post.author.username === username ? <Edit/> : null}  
+                            
                 </section>
+                
               </div>)
 
             }

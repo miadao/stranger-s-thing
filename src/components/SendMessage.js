@@ -3,7 +3,7 @@ import { BASE_URL } from '../api';
 
 const SendMessage = (props) => {
   const [inputMess, setInputMess] = useState('');
-  const {messages, setMessages, token, postID} = props;
+  const {token, postID} = props;
 // console.log(postID);
 // console.log(token);
     const  SendMessages = async (event) => {

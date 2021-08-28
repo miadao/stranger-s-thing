@@ -31,7 +31,6 @@ const App =()=> {
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
-    const [messages, setMessages]= useState('');
     const [profile, setProfile] = useState(false);
     const [token, setToken] = useState('');
     
@@ -61,8 +60,7 @@ const App =()=> {
                             setTitle={setTitle}
                             username={username}
                             token={token}
-                            messages={messages}
-                            setMessages={setMessages}
+                            
                             />
                         
                     </Route>
@@ -111,8 +109,6 @@ const App =()=> {
                         <Profile 
                          username={username}
                          setUsername={setUsername}
-                         messages={messages}
-                         setMessages={setMessages}
                          profile={profile}
                          setProfile={setProfile}
                          token={token}
