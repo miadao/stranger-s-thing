@@ -1,39 +1,47 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../api';
+import { useHistory } from 'react-router-dom';
 
-const AddPost = (props) => {
-        const {title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver} = props;
+const AddPost = ({token, title, setTitle, description, setDescription, price, setPrice, location, setLocation, willDeliver, setWillDeliver}) => {
+
+        const history = useHistory() 
 
         const handleSubmit = async (event) => {
+            console.log("1")
             event.preventDefault();
+
             try {
             const response = await fetch(`${BASE_URL}/posts`, {
                 method: 'POST',
                 headers:{
-                    'Content-Type': 'Application/json'
+                    'Content-Type': 'Application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     post: {
-                        title,
-                        description,
-                        price,
-                        location,
-                        willDeliver
-                }
+                        title: title,
+                        description: description,
+                        price: price,
+                        location: location,
+                        willDeliver: willDeliver
+                    }
                 })
             })
-            const post = await response.json();
-            console.log("post: ", post);
-            setPosts([post, ...posts]);
             setTitle('');
             setDescription('');
             setPrice('');
             setLocation('');
             setWillDeliver(false);
-        } catch (err) {
-            console.error(err);
-        }
+            const post = await response.json();
+            history.push("/posts")
+
+            } catch (err) {
+                console.error(err);
+            }
         };
+
+        
+       
 
     return (
         <section className="addNewPost"> 
@@ -52,7 +60,7 @@ const AddPost = (props) => {
                         Willing to Deliver?
                     </label>
                     <br/>
-                    <button type="submit">Create Post</button>                    
+                    <button type="submit">Create Post</button>                
                 </form>
         </section>
     ) 

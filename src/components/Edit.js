@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 //THIS IS BONUS
 
-const EditPost = (props) => {
+const Edit = (props) => {
     const {title, setTitle, description, setDescription, price, setPrice, location, setLocation} = props;
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
-=======
-import { BASE_URL } from "../api";
-
-const Edit = (props) => {
-    const {posts, setPosts, title, setTitle, description, setDescription, price, setPrice, location, setLocation, token} = props;
->>>>>>> 3e055b066bb114c3816fb4f4c9e075f78f784a68
 
   async function editPost() {
     try {

@@ -55,7 +55,9 @@ const App =()=> {
                         <Posts 
                             posts={posts}
                             setPosts={setPosts}
-                            loginSuccess={loginSuccess}/>
+                            loginSuccess={loginSuccess}
+                            title={title}
+                            setTitle={setTitle}/>
                         
                     </Route>
 
@@ -84,7 +86,19 @@ const App =()=> {
 
                     <Route path="/addPost">
 
-                        <AddPost/>
+                        <AddPost
+                         title={title}
+                         setTitle={setTitle}
+                         price={price} 
+                         setPrice={setPrice} 
+                         location={location}
+                         setLocation={setLocation}
+                         willDeliver={willDeliver}
+                         setWillDeliver={setWillDeliver}
+                         description={description}
+                         setDescription={setDescription}
+                         token={token}
+                        />
                         
                     </Route>
                    

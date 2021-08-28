@@ -24,14 +24,12 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
         <div className="Profile">   
 
             <section className="WelcomeUser"> 
-                <h1>Welcome: </h1>
-                {
-                username
-                } 
+                <h1>Welcome "{username}"" !</h1>
+                
             </section>
 
             <section className="MessageToMe"> 
-                <h1>Message to Me: </h1>  
+                <h1>Message to "{username}": </h1>  
                 {
                 messages
                 }
@@ -39,7 +37,7 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
             </section>
 
             <section className="MessageFromMe">
-                <h1>Message from Me: </h1>
+                <h1>Message from "{username}": </h1>
                 {
                 messages
                 }
