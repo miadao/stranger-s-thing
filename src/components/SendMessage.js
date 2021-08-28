@@ -30,31 +30,24 @@ const SendMessage = ({messages, setMessages, token}) => {
 
         return (
             <fieldset className="SendMessage"> 
+              <h1>Send Message</h1>
                 
-                
-                <div>
-                  <label> Send Message: </label>
-                  <input id ="messages" type="text" name={messages}/>
-                </div>
+              <form onSubmit={SendMessages}>
+                <label> Message: </label>
+                <input 
+                id ="messages" 
+                type="text" 
+                name="messages" 
+                value={messages}
+                onChange={(event)=>setMessages(event.target.value)} />
+                <br/>
 
-                <br></br>
-
-    
-                  <div id="SendMessageButton"> 
-                    <button type="click" name="event" class="button" onSubmit={SendMessages
-                    
-                    
-                    
-                    }>Send Message</button>
-                  </div>
-                    
-              </fieldset>
+                <button id="SendMessageButton" type="submit" name="event">Send Message</button>
+              </form>
+            </fieldset>
         )  
 
     
 }
 
 export default SendMessage;
-
-//How to send to server?
-//How to get server to store this message in the other user?>
