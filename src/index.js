@@ -31,10 +31,10 @@ const App =()=> {
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
-    const [messages, setMessages]= useState([])
-    const [profile, setProfile] = useState(false)
-    const [token, setToken] = useState('')
-    const [postID, setPostID] = useState('')
+    const [messages, setMessages]= useState([]);
+    const [profile, setProfile] = useState(false);
+    const [token, setToken] = useState('');
+    const [postID, setPostID] = useState('');
 
     useEffect (() => {
         if (localStorage.getItem("token")) {
@@ -63,6 +63,8 @@ const App =()=> {
                             token={token}
                             postID={postID}
                             setPostID={setPostID}
+                            messages={messages}
+                            messages={setMessages}
                             />
                         
                     </Route>
@@ -84,7 +86,7 @@ const App =()=> {
                     </Route>
 
 
-                    <Route path="sendmessage">
+                    <Route path="/sendMessage">
                         <SendMessage
                         messages={messages}
                         setMessages={setMessages}
