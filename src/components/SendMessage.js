@@ -3,12 +3,13 @@ import { BASE_URL } from '../api';
 
 const SendMessage = (props) => {
 
-  const {messages, setMessages, token} = props;
-    
+  const {messages, setMessages, token, postID} = props;
+// console.log(postID);
+// console.log(token);
     const  SendMessages = async (event) => {
+      event.preventDefault();      
       try {
-      event.preventDefault();
-      const response = await fetch(`${BASE_URL}/posts/POST_ID/messages`, {
+      const response = await fetch(`${BASE_URL}/posts/${postID}/messages`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

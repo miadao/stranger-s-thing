@@ -31,7 +31,7 @@ const App =()=> {
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
-    const [messages, setMessages]= useState([]);
+    const [messages, setMessages]= useState('');
     const [profile, setProfile] = useState(false);
     const [token, setToken] = useState('');
     const [postID, setPostID] = useState('');
@@ -83,18 +83,7 @@ const App =()=> {
                         token={token}
                         postID={postID}
                         setPostID={setPostID}/>
-                    </Route>
-
-
-                    <Route path="/sendMessage">
-                        <SendMessage
-                        messages={messages}
-                        setMessages={setMessages}
-                        token={token}
-                        />
-                        
-                    </Route>
-                        
+                    </Route>                     
 
                     <Route path="/addPost">
 
