@@ -4,11 +4,8 @@ import SendMessage from './SendMessage';
 import Delete from './Delete';
 import Edit from './Edit';
 
-<<<<<<< HEAD
-const Posts = ({loginSuccess, username, posts, setPosts, token}) => {
-=======
-const Posts = ({username, posts, setPosts, messages, setMessages, token}) => {
->>>>>>> a0a7b43a3aaf65c2a164da1eca7030068449e242
+
+const Posts = ({loginSuccess, username, posts, setPosts, messages, setMessages, token}) => {
   
     const [filter, setFilter] = useState('')
    
@@ -19,8 +16,9 @@ const Posts = ({username, posts, setPosts, messages, setMessages, token}) => {
        fetch (`${BASE_URL}/posts`)
           .then(response=> response.json())
           .then(data => {
+           
             setPosts(data.data.posts)})
-    
+            
     const filterPost = (post, text) => {
       if (post.title.toLowerCase().includes(text.toLowerCase())){
         return true
@@ -47,6 +45,7 @@ const Posts = ({username, posts, setPosts, messages, setMessages, token}) => {
           </h2>
 
           
+          {loginSuccess ? <h3><Link to="/addpost"> <button> Add Posts</button></Link></h3> : null}
 
             {
               posts &&  
@@ -59,21 +58,13 @@ const Posts = ({username, posts, setPosts, messages, setMessages, token}) => {
                     <h4> User: {post.author.username}</h4>
                     <h5> Location: {post.location}</h5>
                     <h6> Deliver: {post.willDeliver ? "Yes" : "No"}</h6>
-                   
-<<<<<<< HEAD
-                     {loginSuccess && post.author.username === username ? <Delete postid={post._id} token={token}/> : null}  
-                     {loginSuccess && post.author.username === username ? <Edit/> : null}  
-                     {loginSuccess ? <SendMessage/> : null}  
-                     {loginSuccess && post.author.username === username ? <h3><Link to="/addpost"> <button> Add Posts</button></Link></h3> : null}
 
-                     
-=======
-                     {post.author.username === username ? <Delete key={post._id} token={token}/>: <SendMessage postID={post._id} messages={messages} setMessages={setMessages} token={token}/>}  
-                     {post.author.username === username ? <Edit/>: null}  
->>>>>>> a0a7b43a3aaf65c2a164da1eca7030068449e242
-                    
-                      
+                    {loginSuccess ? <SendMessage postID={post._id} messages={messages} setMessages={setMessages} token={token}/>: null} 
+                    {loginSuccess && post.author.username === username ? <Delete postid={post._id} token={token}/> : null}  
+                    {loginSuccess && post.author.username === username ? <Edit/> : null}  
+                            
                 </section>
+                
               </div>)
 
             }

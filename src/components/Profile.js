@@ -1,5 +1,8 @@
-import React from 'react';
-const Profile = ({token, username, setUsername, messages, setMessages, setProfile}) => {
+import React, { useState } from 'react';
+
+const Profile = ({token, username, setUsername, setProfile}) => {
+    const [messagesFromUser, setMessagesFromUser] = useState([])
+    const [messagesToUser, setMessagesToUser] = useState([])
     
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     
@@ -12,8 +15,8 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
             })
             .then(response => response.json())
             .then(data => {
-                // console.log (data)
-                setMessages(data.data.messages)
+                console.log(data)
+                setMessagesToUser(data.data.messages)
                 setUsername(data.data.username)
                 setProfile(true)
             })
@@ -31,7 +34,15 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
             <section className="MessageToMe"> 
                 <h1>Message to "{username}": </h1>  
                 {
-                messages
+                    messagesToUser.map((messages) => {
+                        <div key={messages._id}>  
+                            <h1> 
+                                {messages.content}
+                                {messages.fromUser.username}
+                            </h1>
+                        </div>
+                    })
+                
                 }
             
             </section>
@@ -39,7 +50,7 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
             <section className="MessageFromMe">
                 <h1>Message from "{username}": </h1>
                 {
-                messages
+                
                 }
             </section>
 
