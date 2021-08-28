@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-
-
-const Header = ({loginSuccess}) => {
+    
+const Header = ({loginSuccess, setLoginSuccess}) => {
    
     const logOut = () => {
         localStorage.removeItem("token")
+        setLoginSuccess(false)
     }
 
     return (
@@ -17,10 +17,10 @@ const Header = ({loginSuccess}) => {
                 <nav>
                     <ul>
                         <li> <Link to="/posts">Posts</Link> </li>
-                        <li> { !loginSuccess ? <Link to="/login">Login</Link> : <Link to="/login" onClick={logOut} >Logout</Link> } </li>
+                        <li> { !loginSuccess ? <Link to="/login">Login</Link> : <Link to="/login" onClick={logOut} >Logout</Link>} </li>
                         {/* <li> <Link to="/logout">Logout1</Link> </li> */}
-                        <li> { loginSuccess && <Link to="/profile">Profile</Link> }</li>
-                        {console.log("loggingout")}
+                        <li> { loginSuccess && <Link to="/profile">Profile</Link>}</li>
+                        
                     </ul>
                 </nav>
             </section>

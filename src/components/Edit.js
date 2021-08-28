@@ -1,3 +1,5 @@
+//THIS IS BONUS
+
 const EditPost = (props) => {
     const {title, setTitle, description, setDescription, price, setPrice, location, setLocation} = props;
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'

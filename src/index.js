@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router,
 Route,
 Switch,
-Redirect
 } from 'react-router-dom';
 
 
@@ -24,34 +23,31 @@ const App =()=> {
 
     const [posts, setPosts] = useState([])
     const [loginSuccess, setLoginSuccess] = useState(false);
-    const [username, setUsername] = useState(false);
-    const [password, setPassword] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState(false);
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
-    const [message, setMessage]= useState([])
-    const [profile, setProfile] = useState([])
+    const [messages, setMessages]= useState([])
+    const [profile, setProfile] = useState(false)
     const [token, setToken] = useState('')
 
     useEffect (() => {
-        console.log("useEffect")
         if (localStorage.getItem("token")) {
             setToken(localStorage.getItem("token"))
         }
     }, [loginSuccess])
-    console.log("token", token)
-    console.log("JSX")
+    
 
     return <div className="app"> 
-        
         <Router>
-            
             <div>
                 <Header 
-                    loginSuccess={loginSuccess}/>
+                    loginSuccess={loginSuccess}
+                    setLoginSuccess={setLoginSuccess}/>
 
                 <Switch>
                     <Route exact path="/posts">
@@ -112,16 +108,14 @@ const App =()=> {
                         <Profile 
                          username={username}
                          setUsername={setUsername}
-                         message={message}
-                         setMessage={setMessage}
+                         messages={messages}
+                         setMessages={setMessages}
                          profile={profile}
-                         setProfile={setProfile}/>
+                         setProfile={setProfile}
+                         token={token}
+                         setToken={setToken}/>
                     </Route>
 
-                    <Route path="/logout">
-                        <Redirect to="/login"/>
-                        
-                    </Route>
 
                    <Route path="/">
                         <Login

@@ -26,8 +26,6 @@ const Login = ({loginSuccess, setLoginSuccess}) => {
             console.log(result);
             localStorage.setItem("token", result.data.token)
             setLoginSuccess(true)
-           
-           
         })
         .catch(console.error);
     } 
