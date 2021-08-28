@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { BASE_URL } from '../api';
 
 const SendMessage = (props) => {
-
+  const [inputMess, setInputMess] = useState('');
   const {messages, setMessages, token, postID} = props;
 // console.log(postID);
 // console.log(token);
     const  SendMessages = async (event) => {
+
       event.preventDefault();      
       try {
       const response = await fetch(`${BASE_URL}/posts/${postID}/messages`, {
@@ -17,7 +18,7 @@ const SendMessage = (props) => {
         },
         body: JSON.stringify({
           message: {
-              content: messages
+              content: inputMess
           }
         })
       })
@@ -37,8 +38,8 @@ const SendMessage = (props) => {
                 id ="messages" 
                 type="text" 
                 name="messages" 
-                value={messages}
-                onChange={(event)=>setMessages(event.target.value)} />
+                value={inputMess}
+                onChange={(event)=>setInputMess(event.target.value)} />
                 <br/>
 
                 <button id="SendMessageButton" type="submit" name="event">Send Message</button>

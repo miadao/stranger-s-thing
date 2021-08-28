@@ -62,7 +62,7 @@ const App =()=> {
                             username={username}
                             token={token}
                             messages={messages}
-                            messages={setMessages}
+                            setMessages={setMessages}
                             />
                         
                     </Route>
