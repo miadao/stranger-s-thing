@@ -59,3 +59,9 @@ li {
     justify-content: flex-start;
     
 }
+
+.SendMessage {
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+}

@@ -2,7 +2,7 @@
 //THEREFORE, WE ABANDONED THIS OPERATION EFFECTIVELY 8/28/21 BECAUSE WE RAN OUT OF TIME. IGNORE THIS SEARCH COMPONENT. I REPEAT, THIS IGNORE SEARCH COMPONENT. 
 
 import React, { useEffect, useState } from 'react';
-import fetchSearchResults from '../api';
+
 
 const Search = (props) => {
     const [posts, setPosts] = useState([]);

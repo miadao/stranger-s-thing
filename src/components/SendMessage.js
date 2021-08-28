@@ -27,10 +27,10 @@ const SendMessage = () => {
 
         return (
             <fieldset className="SendMessage"> 
-                <h1>Send Message</h1>
+                
                 
                 <div>
-                  <label> Message: </label>
+                  <label> Send Message: </label>
                   <input id ="messages" type="text" name={messages}/>
                 </div>
 

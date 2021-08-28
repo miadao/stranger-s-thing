@@ -12,10 +12,10 @@ CreateProfile,
 Header,
 Login,
 Posts,
-Search,
 SendMessage,
 Profile,
 Edit,
+Delete
 } from './components';
 
 
@@ -34,6 +34,7 @@ const App =()=> {
     const [messages, setMessages]= useState([])
     const [profile, setProfile] = useState(false)
     const [token, setToken] = useState('')
+    const [postID, setPostID] = useState('')
 
     useEffect (() => {
         if (localStorage.getItem("token")) {
@@ -57,29 +58,38 @@ const App =()=> {
                             setPosts={setPosts}
                             loginSuccess={loginSuccess}
                             title={title}
-                            setTitle={setTitle}/>
+                            setTitle={setTitle}
+                            username={username}
+                            token={token}
+                            postID={postID}
+                            setPostID={setPostID}
+                            />
                         
                     </Route>
 
                     <Route path="/edit">
-
                         <Edit                             
                         posts={posts}
                         setPosts={setPosts}/>
                        
                     </Route>
                         
-
-                    <Route path="/search">
-
-                        <Search/>
-                         
+                    <Route path="/delete">
+                        <Delete                             
+                        posts={posts}
+                        setPosts={setPosts}
+                        token={token}
+                        postID={postID}
+                        setPostID={setPostID}/>
                     </Route>
-                        
+
 
                     <Route path="sendmessage">
-
-                        <SendMessage/>
+                        <SendMessage
+                        messages={messages}
+                        setMessages={setMessages}
+                        token={token}
+                        />
                         
                     </Route>
                         

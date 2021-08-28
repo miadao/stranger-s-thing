@@ -1,4 +1,4 @@
-//THIS IS BONUS
+//THIS IS BONUS BUT WE HAVE NOT BEEN ABLE TO FIGURE THIS OUT JUST YET
 
 const Edit = (props) => {
     const {title, setTitle, description, setDescription, price, setPrice, location, setLocation} = props;
