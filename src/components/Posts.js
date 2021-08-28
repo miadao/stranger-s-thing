@@ -3,8 +3,8 @@ import { Link }from 'react-router-dom';
 import SendMessage from './SendMessage';
 import Delete from './Delete';
 
-const Posts = ({username}) => {
-    const [posts, setPosts] = useState([]);
+const Posts = ({username, posts, setPosts}) => {
+  
     const [filter, setFilter] = useState('')
    
    

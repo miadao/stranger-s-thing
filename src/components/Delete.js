@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-const Delete = ({token}) => {
+const Delete = ({token, posts}) => {
     
     const [postID, setPostID] = useState('')
     
@@ -9,7 +9,7 @@ const Delete = ({token}) => {
     const handleDelete = async (event) => {
         event.preventDefault()
    
-        const response = await fetch(`${BASE_URL}/posts/${postID}`, {
+        const response = await fetch(`${BASE_URL}/posts/POST_ID`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
@@ -17,7 +17,8 @@ const Delete = ({token}) => {
         }
         }).then(response => response.json())
         .then(data => {
-            console.log
+            console.log(data)
+            console.log(posts)
         })
     }
  

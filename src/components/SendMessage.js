@@ -30,7 +30,6 @@ const SendMessage = ({messages, setMessages, token}) => {
 
         return (
             <fieldset className="SendMessage"> 
-<<<<<<< HEAD
                 
                 
                 <div>
@@ -50,23 +49,6 @@ const SendMessage = ({messages, setMessages, token}) => {
                   </div>
                     
               </fieldset>
-=======
-              <h1>Send Message</h1>
-                
-              <form onSubmit={SendMessages}>
-                <label> Message: </label>
-                <input 
-                id ="messages" 
-                type="text" 
-                name="messages" 
-                value={messages}
-                onChange={(event)=>setMessages(event.target.value)} />
-                <br/>
-
-                <button id="SendMessageButton" type="submit" name="event">Send Message</button>
-              </form>
-            </fieldset>
->>>>>>> 15363adeb4318a69e7bfc3bcc7ee4f9008922fb1
         )  
 
     
