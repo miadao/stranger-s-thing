@@ -1,51 +1,50 @@
 import React, { useState } from 'react';
-const SendMessage = () => {
-    const [messages, setMessages] = useState([]);
+import { BASE_URL } from '../api';
+
+const SendMessage = ({messages, setMessages, token}) => {
 
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
-    const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
     
     const  SendMessages = async (event) => {
+      try {
       event.preventDefault();
       const response = await fetch(`${BASE_URL}/posts/POST_ID/messages`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${TOKEN}`
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           message: {
-              content: document.getElementById("messages")
+              content: messages
           }
         })
       })
       const data = await response.json();
-      setMessages([data])
-
+      setMessages([])
+      } catch (error) {
+        console.error(error);
+      }
     }
     
 
         return (
             <fieldset className="SendMessage"> 
-                <h1>Send Message</h1>
+              <h1>Send Message</h1>
                 
-                <div>
-                  <label> Message: </label>
-                  <input id ="messages" type="text" name={messages}/>
-                </div>
+              <form onSubmit={SendMessages}>
+                <label> Message: </label>
+                <input 
+                id ="messages" 
+                type="text" 
+                name="messages" 
+                value={messages}
+                onChange={(event)=>setMessages(event.target.value)} />
+                <br/>
 
-                <br></br>
-
-    
-                  <div id="SendMessageButton"> 
-                    <button type="click" name="event" class="button" onSubmit={SendMessages
-                    
-                    
-                    
-                    }>Send Message</button>
-                  </div>
-                    
-              </fieldset>
+                <button id="SendMessageButton" type="submit" name="event">Send Message</button>
+              </form>
+            </fieldset>
         )  
 
     
