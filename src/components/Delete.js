@@ -1,42 +1,30 @@
-import React, { useState } from 'react';
-const Delete = ({token, posts}) => {
+import { useHistory } from 'react-router-dom';
+
+const Delete = ({token}) => {
     
-    const [postID, setPostID] = useState('')
-    
+    const history = useHistory() 
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
-
-    const handleDelete = async (event) => {
-        event.preventDefault()
-   
-        const response = await fetch(`${BASE_URL}/posts/POST_ID`, {
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
+    const handleDelete = () => {
+        fetch(`${BASE_URL}/posts/POST_ID`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         }).then(response => response.json())
-        .then(data => {
-            console.log(data)
-            console.log(posts)
-        })
+        .then(result => {console.log(result)
+            
+        }).catch(console.error)
+       
+        history.push("/posts")
     }
- 
-      // const data = response.json();
-      // console.log('data: ', data)
-      // if (data) {
-      //   const newPosts = posts.filter(post => post.id !== postIdToDelete);
-      //   setPosts(newPosts);
-      //   console.log("Message deleted.")
-      // }
-
+   
+    
       return (
-          <form type="submit">
+          <form onSubmit={handleDelete}>
             <div className="Delete">
-                {
-                    
-                }
-                <button onClick={handleDelete}>Delete</button>
+                <button type="submit">Delete</button>
             </div> 
           </form>
       )

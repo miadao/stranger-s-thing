@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link }from 'react-router-dom';
 import SendMessage from './SendMessage';
 import Delete from './Delete';
+import Edit from './Edit';
 
 const Posts = ({username, posts, setPosts}) => {
   
@@ -15,9 +16,6 @@ const Posts = ({username, posts, setPosts}) => {
           .then(response=> response.json())
           .then(data => {
             setPosts(data.data.posts)})
-    
-        // console.log("posts", posts)
-
     
     const filterPost = (post, text) => {
       if (post.title.toLowerCase().includes(text.toLowerCase())){
@@ -57,9 +55,10 @@ const Posts = ({username, posts, setPosts}) => {
                     <h4> User: {post.author.username}</h4>
                     <h5> Location: {post.location}</h5>
                     <h6> Deliver: {post.willDeliver ? "Yes" : "No"}</h6>
-                    <ul>
-                      <li>{post.author.username === username ? <Delete/>: <SendMessage/> }</li>   
-                    </ul> 
+                   
+                     {post.author.username === username ? <Delete/>: <SendMessage/>}  
+                     {post.author.username === username ? <Edit/>: null}  
+                    
                       
                 </section>
               </div>)
