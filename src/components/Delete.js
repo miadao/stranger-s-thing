@@ -1,12 +1,8 @@
-import { useHistory } from 'react-router-dom';
-
-const Delete = ({token}) => {
-    
-    const history = useHistory() 
+const Delete = ({token, key}) => {
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
-
-    const handleDelete = () => {
-        fetch(`${BASE_URL}/posts/POST_ID`, {
+    const handleDelete = (event) => {
+        event.preventDefault()
+        fetch(`${BASE_URL}/posts/${key}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -16,11 +12,7 @@ const Delete = ({token}) => {
         .then(result => {console.log(result)
             
         }).catch(console.error)
-       
-        history.push("/posts")
     }
-   
-    
       return (
           <form onSubmit={handleDelete}>
             <div className="Delete">
@@ -29,6 +21,4 @@ const Delete = ({token}) => {
           </form>
       )
 }
-
-
 export default Delete;

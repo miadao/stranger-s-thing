@@ -56,7 +56,7 @@ const Posts = ({username, posts, setPosts, messages, setMessages, token}) => {
                     <h5> Location: {post.location}</h5>
                     <h6> Deliver: {post.willDeliver ? "Yes" : "No"}</h6>
                    
-                     {post.author.username === username ? <Delete/>: <SendMessage postID={post._id} messages={messages} setMessages={setMessages} token={token}/>}  
+                     {post.author.username === username ? <Delete key={post._id} token={token}/>: <SendMessage postID={post._id} messages={messages} setMessages={setMessages} token={token}/>}  
                      {post.author.username === username ? <Edit/>: null}  
                     
                       
