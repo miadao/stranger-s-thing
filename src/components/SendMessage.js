@@ -23,6 +23,7 @@ const SendMessage = (props) => {
         })
       })
       const data = await response.json();
+      setInputMess('');
       } catch (error) {
         console.error(error);
       }
