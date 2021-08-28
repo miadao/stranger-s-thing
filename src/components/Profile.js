@@ -24,7 +24,7 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
         <div className="Profile">   
 
             <section className="WelcomeUser"> 
-                <h1>Welcome "{username}"" !</h1>
+                <h1>Welcome "{username}" !</h1>
                 
             </section>
 
