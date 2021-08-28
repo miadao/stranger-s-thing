@@ -12,8 +12,7 @@ const Profile = ({token, username, setUsername, messages, setMessages, setProfil
             })
             .then(response => response.json())
             .then(data => {
-                // console.log (data)
-                setMessages(data.data.messages)
+                setMessages(data.data.messages.content)
                 setUsername(data.data.username)
                 setProfile(true)
             })
