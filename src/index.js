@@ -15,7 +15,7 @@ Posts,
 SendMessage,
 Profile,
 Edit,
-Delete
+
 } from './components';
 
 
@@ -34,7 +34,7 @@ const App =()=> {
     const [messages, setMessages]= useState([]);
     const [profile, setProfile] = useState(false);
     const [token, setToken] = useState('');
-    const [postID, setPostID] = useState('');
+    
 
     useEffect (() => {
         if (localStorage.getItem("token")) {
@@ -61,40 +61,12 @@ const App =()=> {
                             setTitle={setTitle}
                             username={username}
                             token={token}
-                            postID={postID}
-                            setPostID={setPostID}
                             messages={messages}
                             messages={setMessages}
                             />
                         
                     </Route>
 
-                    <Route path="/edit">
-                        <Edit                             
-                        posts={posts}
-                        setPosts={setPosts}/>
-                       
-                    </Route>
-                        
-                    <Route path="/delete">
-                        <Delete                             
-                        posts={posts}
-                        setPosts={setPosts}
-                        token={token}
-                        postID={postID}
-                        setPostID={setPostID}/>
-                    </Route>
-
-
-                    <Route path="/sendMessage">
-                        <SendMessage
-                        messages={messages}
-                        setMessages={setMessages}
-                        token={token}
-                        />
-                        
-                    </Route>
-                        
 
                     <Route path="/addPost">
 

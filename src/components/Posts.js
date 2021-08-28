@@ -4,7 +4,7 @@ import SendMessage from './SendMessage';
 import Delete from './Delete';
 import Edit from './Edit';
 
-const Posts = ({username, posts, setPosts, messages, setMessages}) => {
+const Posts = ({username, posts, setPosts, token}) => {
   
     const [filter, setFilter] = useState('')
    
@@ -46,7 +46,7 @@ const Posts = ({username, posts, setPosts, messages, setMessages}) => {
 
             {
               posts &&  
-              postToDisplay.map((post) => <div key={post.id} >
+              postToDisplay.map((post) => <div key={post._id} >
                 
                 <section className="AllPosts">
                     <h1> Title: {post.title} </h1>
@@ -56,7 +56,7 @@ const Posts = ({username, posts, setPosts, messages, setMessages}) => {
                     <h5> Location: {post.location}</h5>
                     <h6> Deliver: {post.willDeliver ? "Yes" : "No"}</h6>
                    
-                     {post.author.username === username ? <Delete/>: <SendMessage/>}  
+                     {post.author.username === username ? <Delete key={post._id} token={token}/>: <SendMessage/>}  
                      {post.author.username === username ? <Edit/>: null}  
                     
                       
