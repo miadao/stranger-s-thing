@@ -4,7 +4,7 @@ import SendMessage from './SendMessage';
 import Delete from './Delete';
 import Edit from './Edit';
 
-const Posts = ({username, posts, setPosts}) => {
+const Posts = ({username, posts, setPosts, messages, setMessages}) => {
   
     const [filter, setFilter] = useState('')
    

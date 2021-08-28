@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BASE_URL } from '../api';
 
-const SendMessage = ({messages, setMessages, token}) => {
+const SendMessage = (props) => {
 
-    const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
+  const {messages, setMessages, token} = props;
     
     const  SendMessages = async (event) => {
       try {
@@ -21,12 +21,10 @@ const SendMessage = ({messages, setMessages, token}) => {
         })
       })
       const data = await response.json();
-      setMessages([])
       } catch (error) {
         console.error(error);
       }
     }
-    
 
         return (
             <fieldset className="SendMessage"> 
