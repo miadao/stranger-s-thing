@@ -1,17 +1,24 @@
+<<<<<<< HEAD
 //THIS IS BONUS
 
 const EditPost = (props) => {
     const {title, setTitle, description, setDescription, price, setPrice, location, setLocation} = props;
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
+=======
+import { BASE_URL } from "../api";
+
+const Edit = (props) => {
+    const {posts, setPosts, title, setTitle, description, setDescription, price, setPrice, location, setLocation, token} = props;
+>>>>>>> 3e055b066bb114c3816fb4f4c9e075f78f784a68
 
   async function editPost() {
     try {
-      const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
+      const response = await fetch(`${BASE_URL}/posts/${id}`, {
           method: "PATCH",
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${TOKEN}`
+            'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify({
             post: {
@@ -25,17 +32,16 @@ const EditPost = (props) => {
         })
         const data = response.json()
         console.log(data);
-        if (data && data.title) {
-          
+        if (localStorage.getItem("token")) {
+          const newPosts = posts.map(post => {
+            
+          })
         }
-          } catch (er) {
-            console.error(er);
-          }
+        } catch (err) {
+          console.error(err);
         }
-
-
-          return (
-                <div className="EditPost"> 
+      }
+          return (<div className="EditPost"> 
                   <h1>Edit Post</h1>
                   <form onSubmit={editPost}>
                     <label> Title: </label>
@@ -70,14 +76,10 @@ const EditPost = (props) => {
                     placeholder={location} 
                     onChange={(event)=>setLocation(event.target.value)}/>
 
-                    <button id="EditPostButton" type="submit" name="event" class="button">Edit Post</button>
+                    <button id="EditPostButton" type="submit" name="event">Edit Post</button>
                   </form>
                 </div>
           )  
   }
 
-export default EditPost;
-
-//TO DO
-//Attach this to the post that belongs to the user
-//loop over user post ID to see if post ID belongs to the user then attach
+export default Edit;

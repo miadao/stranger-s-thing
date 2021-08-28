@@ -54,13 +54,16 @@ const App =()=> {
 
                         <Posts 
                             posts={posts}
-                            setPosts={setPosts}/>
+                            setPosts={setPosts}
+                            loginSuccess={loginSuccess}/>
                         
                     </Route>
 
                     <Route path="/edit">
 
-                        <Edit/>
+                        <Edit                             
+                        posts={posts}
+                        setPosts={setPosts}/>
                        
                     </Route>
                         

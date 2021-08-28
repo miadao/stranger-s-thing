@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import { Edit } from '.';
 import SendMessage from './SendMessage';
 
-const Posts = () => {
-    
+const Posts = (props) => {
+    const {token, loginSuccess} = props;
     const [posts, setPosts] = useState([]);
 
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
-    const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyYzk1YzgzZGUzODAwMTcxMzhjZGMiLCJ1c2VybmFtZSI6IkRhbmllbCIsImlhdCI6MTYyOTY2OTcyNH0.y4yLHm8FxL3fd9JC2FAQEK4cavHQDWn0_ct_Rwv572E"
     
     useEffect (() => {
         const fetchPosts = async () => {
@@ -16,7 +15,7 @@ const Posts = () => {
             method: 'GET',
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${TOKEN}`
+                "Authorization": `Bearer ${token}`
                 }
             })  
             const data = await response.json();
@@ -67,7 +66,7 @@ const Posts = () => {
                             null}
                         </h6>   
                         <h7>{post.isAuthor === true  ? 
-                            <Edit/>
+                            <Edit />
                             : 
                             null}
                         </h7>  
@@ -79,6 +78,7 @@ const Posts = () => {
                     </section>
                 </div>)
             } 
+            <h3><Link to="/edit" ><button>Edit Post</button></Link></h3>
     </div>
     )
 }
