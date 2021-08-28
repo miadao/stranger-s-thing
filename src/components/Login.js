@@ -1,7 +1,7 @@
 import { Link, Redirect } from 'react-router-dom';
 
-const Login = (props) => {
-   console.log(props)
+const Login = ({loginSuccess, setLoginSuccess}) => {
+  
    
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
@@ -9,11 +9,6 @@ const Login = (props) => {
     const authenticate = (event) => {
        
         event.preventDefault();  
-        //LOGIC
-        //check for inputs
-        //validate the username and password
-        //make AJAX request to server, then server will send back response if user is authenticated 
-        
         fetch(`${BASE_URL}/users/login`, {
             method: "POST",
             headers: {
@@ -30,17 +25,20 @@ const Login = (props) => {
         .then(result => {
             console.log(result);
             localStorage.setItem("token", result.data.token)
-            props.setLoginSuccess(true);
+            setLoginSuccess(true)
+           
+           
         })
         .catch(console.error);
-    
-        
-    }
+    } 
 
-    if(props.loginSuccess===true){
+    
+   
+
+    if (loginSuccess===true){
         return <Redirect to="/profile"/>
 
-    }return (
+    } return (
         <section className="login"> 
             <h1>Login</h1>
             <form onSubmit={authenticate}

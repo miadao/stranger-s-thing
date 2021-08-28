@@ -23,7 +23,6 @@ Edit,
 const App =()=> {
 
     const [posts, setPosts] = useState([])
-    const [authenticated, setAuthenticated] = useState(false);
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [username, setUsername] = useState(false);
     const [password, setPassword] = useState(false);
@@ -89,14 +88,10 @@ const App =()=> {
                         <AddPost/>
                         
                     </Route>
-                    {
-                        console.log(setAuthenticated)
-                    }
+                   
                     <Route path="/login">
 
                         <Login 
-                            authenticated={authenticated}
-                            setAuthenticate={setAuthenticated}
                             loginSuccess={loginSuccess}
                             setLoginSuccess={setLoginSuccess}/>
                         
@@ -130,8 +125,6 @@ const App =()=> {
 
                    <Route path="/">
                         <Login
-                        authenticated={authenticated}
-                        setAuthenticate={setAuthenticated}
                         loginSuccess={loginSuccess}
                         setLoginSuccess={setLoginSuccess}/>
                    </Route>

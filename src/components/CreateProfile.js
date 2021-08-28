@@ -47,10 +47,8 @@ const CreateProfile = () => {
     }
 
     return (
-
         <form onSubmit={(event)=> {
             event.preventDefault()
-            console.log("B")
             checkPassword()
             }}> 
             
@@ -97,7 +95,3 @@ const CreateProfile = () => {
 }
 
 export default CreateProfile;
-
-// TO DO
-// Add the condition rendering if password match 
-//communicate to the server this new user info to store it so this new user can log in

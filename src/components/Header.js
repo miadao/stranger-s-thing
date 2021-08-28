@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = ({loginSuccess}) => {
    
     const logOut = () => {
-        console.log("loggingout")
         localStorage.removeItem("token")
-        
     }
 
     return (
@@ -19,13 +17,15 @@ const Header = ({loginSuccess}) => {
                 <nav>
                     <ul>
                         <li> <Link to="/posts">Posts</Link> </li>
-                        <li> { !loginSuccess ? <Link to="/login">Login</Link> : <Link to="/login">Logout2</Link> } </li>
-                        <li> <Link to="/logout">Logout1</Link> </li>
+                        <li> { !loginSuccess ? <Link to="/login">Login</Link> : <Link to="/login" onClick={logOut} >Logout</Link> } </li>
+                        {/* <li> <Link to="/logout">Logout1</Link> </li> */}
                         <li> { loginSuccess && <Link to="/profile">Profile</Link> }</li>
+                        {console.log("loggingout")}
                     </ul>
                 </nav>
             </section>
         </div>
+       
     )
 }
 
