@@ -4,7 +4,7 @@ import SendMessage from './SendMessage';
 import Delete from './Delete';
 import Edit from './Edit';
 
-const Posts = ({username, posts, setPosts, token}) => {
+const Posts = ({loginSuccess, username, posts, setPosts, token}) => {
   
     const [filter, setFilter] = useState('')
    
@@ -42,7 +42,7 @@ const Posts = ({username, posts, setPosts, token}) => {
             <button type="click" onClick={filterPost}>Filter Posts</button>
           </h2>
 
-          <h3><Link to="/addpost"> <button> Add Posts</button></Link></h3> 
+          
 
             {
               posts &&  
@@ -56,8 +56,12 @@ const Posts = ({username, posts, setPosts, token}) => {
                     <h5> Location: {post.location}</h5>
                     <h6> Deliver: {post.willDeliver ? "Yes" : "No"}</h6>
                    
-                     {post.author.username === username ? <Delete key={post._id} token={token}/>: <SendMessage/>}  
-                     {post.author.username === username ? <Edit/>: null}  
+                     {loginSuccess && post.author.username === username ? <Delete postid={post._id} token={token}/> : null}  
+                     {loginSuccess && post.author.username === username ? <Edit/> : null}  
+                     {loginSuccess ? <SendMessage/> : null}  
+                     {loginSuccess && post.author.username === username ? <h3><Link to="/addpost"> <button> Add Posts</button></Link></h3> : null}
+
+                     
                     
                       
                 </section>
