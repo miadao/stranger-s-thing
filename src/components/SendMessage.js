@@ -30,7 +30,7 @@ const SendMessage = (props) => {
     }
 
         return (
-            <fieldset className="SendMessage"> 
+            <fieldset className="SendMessage" key={postID}> 
               <h1>Send Message</h1>
                 
               <form onSubmit={SendMessages}>
