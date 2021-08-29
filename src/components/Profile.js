@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-const Profile = ({username, token}) => {
+const Profile = ({setUsername, username, token}) => {
     const [messagesFromUser, setMessagesFromUser] = useState([])
     const [messagesToUser, setMessagesToUser] = useState([])
     

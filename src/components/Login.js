@@ -1,6 +1,6 @@
 import { Link, Redirect } from 'react-router-dom';
 
-const Login = ({loginSuccess, setLoginSuccess,setUsername, token, setToken}) => {
+const Login = ({loginSuccess, setLoginSuccess}) => {
   
    
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
@@ -25,25 +25,9 @@ const Login = ({loginSuccess, setLoginSuccess,setUsername, token, setToken}) => 
         .then(result => {
             console.log(result);
             localStorage.setItem("token", result.data.token)
-            setToken(result.data.token)
             setLoginSuccess(true)
         })
         .catch(console.error);
-
-        fetch (`${BASE_URL}/users/me`, {
-            headers:{
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setUsername(data.data.username)
-                localStorage.setItem("username", data.data.username)
-
-            })
-            .catch(console.error);
     } 
 
     

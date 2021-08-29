@@ -34,33 +34,12 @@ const App =()=> {
     
 
     useEffect (() => {
-        if (localStorage.getItem("token") && localStorage.getItem("username") ) {
+        if (localStorage.getItem("token") ) {
             setToken(localStorage.getItem("token"))
-            setUsername(localStorage.getItem("username"))
             setLoginSuccess(true)
         }
-
     }, [loginSuccess])
 
-    
-    // useEffect ( () => { 
-    //     fetch (`${BASE_URL}/users/me`, {
-    //         headers:{
-    //             "Content-Type": "application/json",
-    //             "Authorization": `Bearer ${token}`
-    //             }
-    //         })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             setMessagesToUser(data.data.messages)
-    //             setMessagesFromUser(data.data.messages)
-    //             setUsername(data.data.username)
-
-    //         })
-    //         .catch(console.error);
-    // },[])
-            
 
     return <div className="app"> 
         <Router>
@@ -111,9 +90,7 @@ const App =()=> {
                         <Login 
                             loginSuccess={loginSuccess}
                             setLoginSuccess={setLoginSuccess}
-                            setUsername={setUsername}
-                            token={token}
-                            setToken={setToken}/>
+                            setUsername={setUsername}/>
                         
                     </Route>
 
@@ -135,6 +112,7 @@ const App =()=> {
                          messagesToUser={messagesToUser}
                          setMessagesToUser={setMessagesToUser}
                          username={username}
+                         setUsername={setUsername}
                          token={token}/>
                     </Route>
 
