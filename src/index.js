@@ -12,15 +12,12 @@ CreateProfile,
 Header,
 Login,
 Posts,
-SendMessage,
-Profile,
-Edit,
-
+Profile
 } from './components';
 
 
 const App =()=> {
-
+    const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     const [posts, setPosts] = useState([])
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [username, setUsername] = useState('');
@@ -31,16 +28,18 @@ const App =()=> {
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
-    const [profile, setProfile] = useState(false);
     const [token, setToken] = useState('');
+    const [messagesFromUser, setMessagesFromUser] = useState([]);
+    const [messagesToUser, setMessagesToUser] = useState([]);
     
 
     useEffect (() => {
-        if (localStorage.getItem("token")) {
+        if (localStorage.getItem("token") ) {
             setToken(localStorage.getItem("token"))
+            setLoginSuccess(true)
         }
     }, [loginSuccess])
-    
+
 
     return <div className="app"> 
         <Router>
@@ -90,7 +89,8 @@ const App =()=> {
 
                         <Login 
                             loginSuccess={loginSuccess}
-                            setLoginSuccess={setLoginSuccess}/>
+                            setLoginSuccess={setLoginSuccess}
+                            setUsername={setUsername}/>
                         
                     </Route>
 
@@ -107,12 +107,13 @@ const App =()=> {
 
                     <Route path="/profile">
                         <Profile 
+                         messagesFromUser={messagesFromUser}
+                         setMessagesFromUser={setMessagesFromUser}
+                         messagesToUser={messagesToUser}
+                         setMessagesToUser={setMessagesToUser}
                          username={username}
                          setUsername={setUsername}
-                         profile={profile}
-                         setProfile={setProfile}
-                         token={token}
-                         setToken={setToken}/>
+                         token={token}/>
                     </Route>
 
 

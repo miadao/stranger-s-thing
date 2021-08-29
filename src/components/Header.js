@@ -4,6 +4,7 @@ const Header = ({loginSuccess, setLoginSuccess}) => {
    
     const logOut = () => {
         localStorage.removeItem("token")
+        localStorage.removeItem("username")
         setLoginSuccess(false)
     }
 
