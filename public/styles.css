@@ -40,9 +40,15 @@ li {
 }
 
 .WelcomeUser, .MessageToMe, .MessageFromMe {
-    text-align: center;
+    text-align: left;
     margin-top: 5%;
+    color: blue;
 }
+
+.MessagesToUser, .MessagesFromUser {
+    text-align: left;
+    color:blueviolet;
+} 
 
 .AddPost {
     margin-left: 5%;

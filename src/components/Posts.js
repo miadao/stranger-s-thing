@@ -15,7 +15,7 @@ const Posts = ({loginSuccess, username, posts, setPosts, messages, setMessages, 
        fetch (`${BASE_URL}/posts`)
           .then(response=> response.json())
           .then(data => {
-           
+
             setPosts(data.data.posts)})
             
     const filterPost = (post, text) => {

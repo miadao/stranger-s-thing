@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-
-const Profile = ({token, username, setUsername, setProfile}) => {
+import React, { useState, useEffect } from 'react';
+const Profile = ({username, token}) => {
     const [messagesFromUser, setMessagesFromUser] = useState([])
     const [messagesToUser, setMessagesToUser] = useState([])
     
     const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     
-    
+    useEffect ( () => { 
         fetch (`${BASE_URL}/users/me`, {
             headers:{
                 "Content-Type": "application/json",
@@ -17,40 +16,43 @@ const Profile = ({token, username, setUsername, setProfile}) => {
             .then(data => {
                 console.log(data)
                 setMessagesToUser(data.data.messages)
+                setMessagesFromUser(data.data.messages)
                 setUsername(data.data.username)
-                setProfile(true)
+
             })
             .catch(console.error);
-
+    },[])
             
     return (
         <div className="Profile">   
 
             <section className="WelcomeUser"> 
-                <h1>Welcome "{username}" !</h1>
-                
+                <h1>Welcome {username} !</h1>
             </section>
 
             <section className="MessageToMe"> 
-                <h1>Message to "{username}": </h1>  
+                <h1>Message to You: </h1>  
                 {
-                    messagesToUser.map((messages) => {
-                        <div key={messages._id}>  
-                            <h1> 
-                                {messages.content}
-                                {messages.fromUser.username}
-                            </h1>
-                        </div>
-                    })
-                
+                    messagesToUser.map((message) => 
+                        <ul key={message._id} className="MessagesToUser">  
+                            
+                            {message.fromUser.username !== username ? <li> "{message.content}"  -from:{message.fromUser.username}</li> : <h2></h2>}
+                              
+                        </ul>  
+                    ) 
                 }
-            
             </section>
 
             <section className="MessageFromMe">
-                <h1>Message from "{username}": </h1>
+                <h1>Message from You: </h1>
                 {
-                
+                     messagesFromUser.map((message) => 
+                        <ul key={message._id} className="MessagesFromUser">  
+                             
+                            {message.fromUser.username === username ? <li> "{message.content}" sent to post:{message.post.title} </li> : <h2></h2>}
+                            
+                        </ul>
+                    )
                 }
             </section>
 

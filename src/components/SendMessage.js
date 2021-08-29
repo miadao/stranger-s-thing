@@ -31,8 +31,6 @@ const SendMessage = (props) => {
 
         return (
             <fieldset className="SendMessage"> 
-              <h1>Send Message</h1>
-                
               <form onSubmit={SendMessages}>
                 <label> Message: </label>
                 <input 

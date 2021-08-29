@@ -12,15 +12,12 @@ CreateProfile,
 Header,
 Login,
 Posts,
-SendMessage,
-Profile,
-Edit,
-
+Profile
 } from './components';
 
 
 const App =()=> {
-
+    const BASE_URL ='https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
     const [posts, setPosts] = useState([])
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [username, setUsername] = useState('');
@@ -31,16 +28,39 @@ const App =()=> {
     const [location, setLocation] = useState('');
     const [willDeliver, setWillDeliver] = useState(false);
     const [description, setDescription] = useState('');
-    const [profile, setProfile] = useState(false);
     const [token, setToken] = useState('');
+    const [messagesFromUser, setMessagesFromUser] = useState([]);
+    const [messagesToUser, setMessagesToUser] = useState([]);
     
 
     useEffect (() => {
-        if (localStorage.getItem("token")) {
+        if (localStorage.getItem("token") && localStorage.getItem("username") ) {
             setToken(localStorage.getItem("token"))
+            setUsername(localStorage.getItem("username"))
+            setLoginSuccess(true)
         }
+
     }, [loginSuccess])
+
     
+    // useEffect ( () => { 
+    //     fetch (`${BASE_URL}/users/me`, {
+    //         headers:{
+    //             "Content-Type": "application/json",
+    //             "Authorization": `Bearer ${token}`
+    //             }
+    //         })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setMessagesToUser(data.data.messages)
+    //             setMessagesFromUser(data.data.messages)
+    //             setUsername(data.data.username)
+
+    //         })
+    //         .catch(console.error);
+    // },[])
+            
 
     return <div className="app"> 
         <Router>
@@ -90,7 +110,10 @@ const App =()=> {
 
                         <Login 
                             loginSuccess={loginSuccess}
-                            setLoginSuccess={setLoginSuccess}/>
+                            setLoginSuccess={setLoginSuccess}
+                            setUsername={setUsername}
+                            token={token}
+                            setToken={setToken}/>
                         
                     </Route>
 
@@ -107,12 +130,12 @@ const App =()=> {
 
                     <Route path="/profile">
                         <Profile 
+                         messagesFromUser={messagesFromUser}
+                         setMessagesFromUser={setMessagesFromUser}
+                         messagesToUser={messagesToUser}
+                         setMessagesToUser={setMessagesToUser}
                          username={username}
-                         setUsername={setUsername}
-                         profile={profile}
-                         setProfile={setProfile}
-                         token={token}
-                         setToken={setToken}/>
+                         token={token}/>
                     </Route>
 
 
