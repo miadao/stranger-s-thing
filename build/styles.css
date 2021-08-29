@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header, .header2 {
+    background-color: aquamarine;
+    border: 2px solid;
+  
+}
+
+
+.title, .title2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    float: left;
+    
+}
+
+.links, .links2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+   
+}
+
+ul {
+    list-style: none;
+    
+}
+
+li {
+    float: right;
+    margin: 30px;
+    font-size: 25px;
+   
+}
+
+.WelcomeUser, .MessageToMe, .MessageFromMe {
+    text-align: left;
+    margin-top: 5%;
+    color: blue;
+}
+
+.MessagesToUser, .MessagesFromUser {
+    text-align: left;
+    color:blueviolet;
+} 
+
+.AddPost {
+    margin-left: 5%;
+}
+
+.AllPosts{
+    border: 1px solid;
+    margin: 2%;
+}
+
+.CreateUsername, .CreatePassword {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+}
+
+.SendMessage {
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+}
