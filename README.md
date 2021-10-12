@@ -1,6 +1,6 @@
-# Stranger-s-Thing
-Hey there, we are the kickin chickens. The gang is made up of one female chicken and one male chicken. Each one of us has our own little chicken family, AND we are not related ... but we're kickin it! 
+Project: Stranger-s-Thing
+Project Description: A consumer-to-consumer sales platform built in two weeks by a team of 2 developers. 
+Team Members: Mia Dao, Daniel Dulong 
 
-Come check out our mind mapping/ brainstorming board at Mockflow.com. Our link is: https://wireframepro.mockflow.com/view/strangersthing. And please don't judge, as we're poor chickens who don't have money to upgrade to the Pro option yet. 
-
-So, what came first, the chicken or the egg??
+Our mapping/ brainstorming board at Mockflow.com, link: https://wireframepro.mockflow.com/view/strangersthing. 
+Development: Team collaboration through Github, agile workflow with wireframe, Zoom & Slack video call for remote pair programming, Postmand for API testings, implement persistent data cache on the front-end, and enhance web page functionality with React Frameowrk, JS, HTML5 and CSS3.
